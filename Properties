@@ -1,0 +1,11 @@
+// Deleting a Property
+var person = {firstName:”Aaron", lastName:”Rose", age:37, eyeColor:”green"};
+delete person.age; 
+
+// A Method
+var message = “Hey Class!”;
+	var x = message.toUpperCase();
+	
+//Result of the Method
+HEY CLASS!
+
