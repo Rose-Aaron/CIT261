@@ -1,0 +1,15 @@
+var scores = [47, 23, 38];
+var arrayLength = scores.length;
+var roundNumber = 0;
+var msg = '';
+
+for (var i = 0; i < arrayLength; i++) {
+
+	roundNumber = (i + 1);
+
+	msg += 'Round ' + roundNumber + ': ';
+
+	msg += scores[i] + '';
+}
+
+document.getElementById('answer').innerHTML = msg;
