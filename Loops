@@ -1,38 +1,47 @@
-// for loop
-var scores = [47, 23, 38];
-var arrayLength = scores.length;
-var roundNumber = 0;
-var msg = '';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Code</title>
+</head>
+<body>
+	// for loop
+	var scores = [47, 23, 38];
+	var arrayLength = scores.length;
+	var roundNumber = 0;
+	var msg = '';
 
-for (var i = 0; i < arrayLength; i++) {
+	for (var i = 0; i < arrayLength; i++) {
 
-	roundNumber = (i + 1);
+		roundNumber = (i + 1);
 
-	msg += 'Round ' + roundNumber + ': ';
+		msg += 'Round ' + roundNumber + ': ';
 
-	msg += scores[i] + '';
+		msg += scores[i] + '';
 }
 
-document.getElementById('answer').innerHTML = msg;
+	document.getElementById('answer').innerHTML = msg;
 
-// while loop
-var i = 1;
-var msg = '';
+	// while loop
+	var i = 1;
+	var msg = '';
 
-while (i < 10) {
-	msg += i + ' x 5 = ' + (i * 5) + '';
-	i++;
+	while (i < 10) {
+		msg += i + ' x 5 = ' + (i * 5) + '';
+		i++;
 }
 
-document.getElementById('answer').innerHTML = msg;
+	document.getElementById('answer').innerHTML = msg;
 
-// do while loop
-var i = 1;
-var msg = '';
+	// do while loop
+	var i = 1;
+	var msg = '';
 
-do {
-	msg += i + ' x 5 = ' + (i * 5) + '';
-	i++;
-} while (i < 1);
+	do {
+		msg += i + ' x 5 = ' + (i * 5) + '';
+		i++;
+	} while (i < 1);
 
-document.getElementById('answer').innerHTML = msg;
+	document.getElementById('answer').innerHTML = msg;
+</body>
+</html>
