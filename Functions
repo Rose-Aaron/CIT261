@@ -1,14 +1,23 @@
-var score = 56;
-var msg = '';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Code</title>
+</head>
+<body>
+	var score = 56;
+	var msg = '';
 
-function game() {
-	msg += 'Run! ';
+	function game() {
+		msg += 'Run! ';
 }
 
-if (score >= 35) {
-	game();
+	if (score >= 35) {
+		game();
 	msg += 'Winner.';
 }
 
-var el = document.getElementById('answer');
-el.innerHTML = msg;
+	var el = document.getElementById('answer');
+		el.innerHTML = msg;
+</body>
+</html>
