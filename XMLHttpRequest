@@ -1,23 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <titleXMLHttpRequest</title>
+</head>
+<body>
+</body>
 <script type="text/javascript">
-		var companyListJson = "";
-		var companyList = "";
+	var companyListJson = "";
+	var companyList = "";
 
-		var loadData = function ()
-		{
-			var xhr = new XMLHttpRequest();
+	var loadData = function ()
+	{
+	var xhr = new XMLHttpRequest();
 			
-			xhr.open("GET", 'URL', true);
-			xhr.send(null);
+		xhr.open("GET", 'URL', true);
+		xhr.send(null);
 
-			xhr.onreadystatechange = function () {
-				if(xhr.readyState === 4 || xhr.readyState === XMLHttpRequest.DONE) {
-					if(xhr.status === 200 || xhr.status == 0) {
-						companyListJson = xhr.responseText;
-						companyList = JSON.parse(companyListJson);
-						useData();
-					}
-					else {
-					}
-				}
-			}
-		};
+		xhr.onreadystatechange = function () {
+	if(xhr.readyState === 4 || xhr.readyState === XMLHttpRequest.DONE) {
+	
+	if(xhr.status === 200 || xhr.status == 0) {
+		companyListJson = xhr.responseText;
+		companyList = JSON.parse(companyListJson);
+		useData();
+		}
+	else {
+	}
+     }
+   }
+};
+</html>
