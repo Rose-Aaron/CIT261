@@ -1,19 +1,28 @@
-// Arrays
-var cars1;
-cars = ['honda', 'toyota', 'acura'];
-var cars2 = new Array('honda', 'toyota', 'acura');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Arrays</title>
+</head>
+<body>
+  
+  // Arrays
+  var cars1;
+  cars = ['honda', 'toyota', 'acura'];
+  var cars2 = new Array('honda', 'toyota', 'acura');
 
+  var el1 = document.getElementById('cars1');
+    el1.textContent = cars1[0];
+  var el2 = document.getElementById('cars2');
+    el2.textContent = cars2[0];
 
-var el1 = document.getElementById('cars1');
-el1.textContent = cars1[0];
-var el2 = document.getElementById('cars2');
-el2.textContent = cars2[0];
-
-// Associative Arrays
-var myPlace = {};
-myPlace.city = "Salt Lake";
-myplace.state = "Utah";
-myPlace.country = "United States";
-console.log(myObject.length);
-console.log("City is: " + myObject['city']);
-console.log("City is: " + myObject.city);
+  // Associative Arrays
+  var myPlace = {};
+    myPlace.city = "Salt Lake";
+    myplace.state = "Utah";
+    myPlace.country = "United States";
+  console.log(myObject.length);
+  console.log("City is: " + myObject['city']);
+  console.log("City is: " + myObject.city);
+</body>
+</html>
