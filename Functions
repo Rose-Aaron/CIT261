@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My Code</title>
+  <title>Functions</title>
 </head>
 <body>
 	var score = 56;
