@@ -1,0 +1,39 @@
+
+<script type="text/javascript">
+var names = ["Aaron", "Starlene", "Riley", "Reagan", "Jennifer", "Brett", "Randilyn", "Remington"];
+var familyCar = {make:"Honda", model:"Odyssey", year:"2017", color:"Black"};
+localStorage.setItem("names", JSON.stringify(names));
+localStorage.setItem("familyCar", JSON.stringify(familyCar));
+</script>
+
+<script type="text/javascript">
+function Contact(name, phone, address, email) {
+    this.name = name;
+    this.phone = phone;
+    this.address = address;
+    this.email = email;
+}
+
+function addContact() {
+    var nameElement = document.getElementById('name');
+    var phoneElement = document.getElementById('phone');
+    var addressElement = document.getElementById('address');
+    var emailElement = document.getElementById('email');
+    var name = nameElement.value;
+    var phone = phoneElement.value;
+    var address = addressElement.value;
+    var email = emailElement.value;
+    var newContact = new Contact(name, phone, address, email);
+    var contactList = JSON.parse(localStorage.getItem("contactList"));
+    if(contactList === null) {
+        contactList = Array();
+    }
+    contactList.push(newContact);
+    localStorage.setItem("contactList", JSON.stringify(contactList));
+    nameElement.value = "";
+    phoneElement.value = "";
+    addressElement.value = "";
+    emailElement.value = "";
+    updateTable();
+}
+</script>
