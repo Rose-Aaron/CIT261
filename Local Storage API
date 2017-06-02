@@ -120,7 +120,7 @@
 					<button onclick="createArray()">Store Array</button><br /><br />
                 </div>
                 <div class="col-md-12">
-					<p>Use a complext JSON object to demonstrate Complex objects</p>
+					<p>Use a complex JSON object to demonstrate Complex objects</p>
 					<p>
 						<!-- http://json.org/example.html -->
 						{"menu": {"id": "file","value": "File","popup": {"menuitem": [{"value": "New", "onclick": "CreateNewDoc()"},{"value": "Open", "onclick": "OpenDoc()"},{"value": "Close", "onclick": "CloseDoc()"}]}}}
