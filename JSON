@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JSON</title>
+
+		<meta charset="utf-8" />
+    <meta name="Author" content="Aaron Rose" />
+    
+    <link rel="stylesheet" href="content/main.css" />
+		<script src="scripts/main.js"></script>
+    
+    <script>
+		var empObj ={
+					"employees":
+						[
+							{"firstName":"Star", "lastName":"Rose"}, 
+							{"firstName":"Riley", "lastName":"Reeves"},
+							{"firstName":"Reagan", "lastName":"Reeves"}
+						]
+					}
+		var empTxt ='{ "employees" : [' +
+					'{ "firstName":"Star" , "lastName":"Rose" },' +
+					'{ "firstName":"Riley" , "lastName":"Reeves" },' +
+					'{ "firstName":"Reagan" , "lastName":"Reeves" } ]}';
+		</script>
+		
+	</head>
+	<body>
+		<div class="container body-content">
+			<div class="row">
+                <div class="col-md-12">
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - JSON Parse, Stringify</h2>
+                    <a href="index.html">Home</a><br/><br/>
+                </div>
+				<div class="col-md-12">
+					<h3>JSON Object</h3>
+			&nbsp;&nbsp;var empObj ={<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;"employees":<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"firstName":"Star", "lastName":"Rose"}, <br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"firstName":"Riley", "lastName":"Reeves"},<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"firstName":"Reagan", "lastName":"Reeves"}<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+
+					<h3>JSON String</h3>
+			&nbsp;&nbsp;var empTxt ='{ "employees" : [' +<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'{ "firstName":"Star" , "lastName":"Rose" },' +<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'{ "firstName":"Riley" , "lastName":"Reeves" },' +<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'{ "firstName":"Reagan" , "lastName":"Reeves" } ]}';<br/>
+					<br/>
+					
+					<h3>JSON Object without Conversion</h3>
+			&nbsp;&nbsp;document.getElementById("rawObjOut").innerHTML =<br/>
+			&nbsp;&nbsp;empObj.employees[1].firstName + " " + empObj.employees[1].lastName;<br/>
+
+					<p id="rawObjOut"></p>	
+
+					<script>
+						document.getElementById("rawObjOut").innerHTML =
+						empObj.employees[1].firstName + " " + empObj.employees[1].lastName;
+					</script>
+
+					<h3>JSON String to Object</h3>
+			&nbsp;&nbsp;var obj = JSON.parse(empTxt);<br/>
+			&nbsp;&nbsp;document.getElementById("jsonToObject").innerHTML =<br/>
+			&nbsp;&nbsp;obj.employees[1].firstName + " " + obj.employees[1].lastName;<br/>
+
+					<p id="jsonToObject"></p>
+
+					<script>
+						var obj = JSON.parse(empTxt);
+						document.getElementById("jsonToObject").innerHTML =
+						obj.employees[1].firstName + " " + obj.employees[1].lastName;
+					</script>
+					
+					<h3>JSON Object to String</h3>
+			&nbsp;&nbsp;var text = JSON.stringify(obj);<br/>
+			&nbsp;&nbsp;document.getElementById("jsonToString").innerHTML = text;<br/>		
+
+					<p id="jsonToString"></p>
+
+					<script>
+						var text = JSON.stringify(obj);
+						document.getElementById("jsonToString").innerHTML = text;	
+					</script>
+					
+					<br/>
+					<br/>
+					<br/>
+				</div>
+            </div>
+        </div>
+	</body>
+</html>
