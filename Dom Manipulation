@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-		<title>DOM Manipulation</title>
+    <title>DOM Manipulation</title>
     
     <meta charset="utf-8" />
-		<meta name="Author" content="Aaron Rose" />
+    <meta name="Author" content="Aaron Rose" />
 
     <link rel="stylesheet" href="content/main.css" />
-		<script src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
     
   </head>
 	<body>
@@ -48,13 +48,13 @@
 				<div class="col-md-12">
 					<button onclick="domTestAddP('This is New')">Add paragraph Element</button><br /><br />
 
-					<label>Enter YouTube Hash: </lable> <input id="YouTubeId" type="text" value="hM9h1wN4rfU"></input><br />
+					<label>Enter YouTube Video URL: </lable> <input id="YouTubeId" type="text" value="hM9h1wN4rfU"></input><br />
 					<button onclick="domTestAddYouTube(document.getElementById('YouTubeId').value)">Add YouTube Video</button><br /><br />
 				</div>
                 <div class="col-md-12">
 					<div id="div1">
-						<p id="p1">This is a paragraph.</p>
-						<p id="p2">This is another paragraph.</p>
+						<p id="p1">"This is my first time on a talk show."</p>
+						<p id="p2">"I believe I can fly."</p>
 					</div>
 					<div id="videoFrame1">
 					</div>
