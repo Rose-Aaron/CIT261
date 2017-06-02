@@ -1,47 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
   <title>Local Storage API</title>
+
+  <meta charset="utf-8">
+  <meta name="Author" content="Aaron Rose" />
+  
+  <link rel="stylesheet" href="content/main.css" />
+  <script src="scripts/main.js"></script>
+  <script>
+			function verifyLocalStorageSupport() {
+				if(typeof(Storage) === "undefined") {
+					console.log("Local storage not supported.");
+					alert("Local Storage is Not supported!");
+				}
+			}
+			function storageExamples() {
+				  localStorage.setItem("key", "data");
+				var storageData = localStorage.getItem("key");
+				  localStorage.removeItem("key");
+				  sessionStorage.setItem("key", "data");
+				var storageData =  sessionStorage.getItem("key");
+				  sessionStorage.removeItem("key");
+			}
+			function createArray() {
+				var storageKey = document.getElementById("StorageKey").value;
+				var stringCheck = document.getElementById("ParseArray").value;
+				var resultsValue = "";
+				  console.log(storageKey);
+				  console.log(stringCheck);
+				if(storageKey.length > 0 ) {
+					if(stringCheck.includes(",") ) {
+						var myArray = stringCheck.split(",");
+						localStorage.setItem(storageKey, JSON.stringify(myArray));
+						sessionStorage.setItem(storageKey, JSON.stringify(myArray));
+						resultsValue = "Stored";
+					}
+					else {
+						resultsValue = "No comma seperated list entered.";
+					}
+				}
+				else {
+					resultsValue = "The key is Required.";
+				}
+				console.log(resultsValue);
+				document.getElementById("results").innerHTML = resultsValue;				
+			}
+			function storeJson() {
+				var storageKey = document.getElementById("StorageKey").value;
+				var jsonString = document.getElementById("GrabJson").value;
+				console.log(storageKey);
+				console.log(jsonString);
+				
+				var resultsValue = "";
+				if(storageKey.length > 0 ) {
+					try {
+						var jsonToObj = JSON.parse(jsonString);
+						  localStorage.setItem(storageKey, JSON.stringify(jsonToObj));
+						  sessionStorage.setItem(storageKey, JSON.stringify(jsonToObj));
+						  resultsValue = "Stored";
+					}
+					catch(err) {
+						resultsValue = "This is not a JSON string: " + err;
+					}
+				}
+				else {
+					resultsValue = "The key is Required.";
+				}
+				console.log(resultsValue);
+				document.getElementById("results").innerHTML = resultsValue;				
+			}
+			function dumpLocalStorage() {
+				var resultsValue = "Persistant Data<br />";
+				for(var ii=0; ii<localStorage.length; ii++)	{
+					resultsValue += "Local Storage Results Out Index=" + 
+					ii + 
+					" key=" + 
+					localStorage.key(ii) + 
+					" - " 
+					+ JSON.parse(localStorage.getItem(localStorage.key(ii))) + 
+					"<br/>";
+				}
+				resultsValue += "<br /><br />Volitile Data<br />";
+				for(var ii=0; ii<sessionStorage.length; ii++)	{
+					resultsValue += "Session Storage Out Index=" + 
+					ii + 
+					" key=" + 
+					localStorage.key(ii) + 
+					" - " 
+					+ JSON.parse(localStorage.getItem(localStorage.key(ii))) + 
+					"<br/>";
+				}
+				console.log(resultsValue);
+				document.getElementById("results").innerHTML = resultsValue;				
+			}
+			function clearStorage() {
+				localStorage.clear();
+				sessionStorage.clear();
+			}
+		</script>
 </head>
 <body>
-<script type="text/javascript">
-    var names = ["Aaron", "Starlene", "Riley", "Reagan", "Jennifer", "Brett", "Randilyn", "Remington"];
-    var familyCar = {make:"Honda", model:"Odyssey", year:"2017", color:"Black"};
-    localStorage.setItem("names", JSON.stringify(names));
-    localStorage.setItem("familyCar", JSON.stringify(familyCar));
-</script>
-
-<script type="text/javascript">
-function Contact(name, phone, address, email) {
-    this.name = name;
-    this.phone = phone;
-    this.address = address;
-    this.email = email;
-}
-
-function addContact() {
-    var nameElement = document.getElementById('name');
-    var phoneElement = document.getElementById('phone');
-    var addressElement = document.getElementById('address');
-    var emailElement = document.getElementById('email');
-    var name = nameElement.value;
-    var phone = phoneElement.value;
-    var address = addressElement.value;
-    var email = emailElement.value;
-    var newContact = new Contact(name, phone, address, email);
-    var contactList = JSON.parse(localStorage.getItem("contactList"));
-    if(contactList === null) {
-        contactList = Array();
-    }
-    contactList.push(newContact);
-    localStorage.setItem("contactList", JSON.stringify(contactList));
-    nameElement.value = "";
-    phoneElement.value = "";
-    addressElement.value = "";
-    emailElement.value = "";
-    updateTable();
-}
-</script>
+		<div class="container body-content">
+			<div class="row">
+                <div class="col-md-12">
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - Local Storage API</h2>
+                    <a href="index.html">Home</a><br/><br/>
+                </div>
+				<div class="row">
+					<div class="col-md-12"><hr /></div>
+				</div>
+				<div class="col-md-12">
+					<label>Enter StorageKey: </lable> <input id="StorageKey" type="text" value=""></input><br /><hr /><br />
+				</div>
+                <div class="col-md-12">
+					<p>Enter a simple comma separated list to create an array</p>
+					<label>Enter a Comma Seperated List: </lable> <input id="ParseArray" type="text" value=""></input><br />
+					<button onclick="createArray()">Store Array</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<p>Use a complext JSON object to demonstrate Complex objects</p>
+					<p>
+						<!-- http://json.org/example.html -->
+						{"menu": {"id": "file","value": "File","popup": {"menuitem": [{"value": "New", "onclick": "CreateNewDoc()"},{"value": "Open", "onclick": "OpenDoc()"},{"value": "Close", "onclick": "CloseDoc()"}]}}}
+					</p>
+					<label>Enter a JSON string: </lable> <textarea id="GrabJson" type="text" value=""></textarea><br />
+					<button onclick="storeJson()">Store JSON Object</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<button onclick="dumpLocalStorage()">Display Local Storage</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<button onclick="clearStorage()">Clear Local Storage (Delete all data)</button><br /><br />
+                </div>
+				<div class="col-md-12">
+					<p id="results"></p><br /><br /><br /><br />
+				</div>
+            </div>
+        </div>
 </body>
 </html>
