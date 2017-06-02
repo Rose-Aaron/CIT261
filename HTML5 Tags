@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>HTML 5 Tags</title>
+    
+ 		<meta charset="utf-8" />
+		<meta name="Author" content="Aaron Rose" />
+
+    <link rel="stylesheet" href="content/main.css" />
+		<script src="scripts/main.js"></script>
+    
+</head>
+	<body>
+		<div class="container body-content">
+			<div class="row">
+                <div class="col-md-12">
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - HTML 5 Tags</h2>
+                    <a href="index.html">Home</a><br/><br/>
+                </div>
+				<div class="row">
+					<div class="col-md-12"><hr /></div>
+				</div>
+                <div class="col-md-12">
+					<canvas id="myCanvas"></canvas>
+
+					<script>
+						var canvas = document.getElementById("myCanvas");
+						var ctx = canvas.getContext("2d");
+						ctx.fillStyle = "#FF0000";
+						ctx.fillRect(0, 0, 100, 100);
+					</script>
+                </div>
+                <div class="col-md-12">
+					<audio controls>
+						<source src="content/audio.mp3" type="audio/mpeg">
+						Your browser does not support the audio tag.
+					</audio>
+                </div>
+                <div class="col-md-12">
+					<embed type="application/x-shockwave-flash" src="content/shockwave.swf" width="640" height="420">
+                </div>
+                <div class="col-md-12">
+					<video width="320" height="240" controls>
+						<source src="content/video.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
