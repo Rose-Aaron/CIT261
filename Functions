@@ -1,23 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
   <title>Functions</title>
+
+  <meta charset="utf-8">
+  <meta name="Author" content="Aaron Rose" />
+  
+  <link rel="stylesheet" href="content/main.css" />
+  <script src="scripts/main.js"></script>
+  <script>
+	var empObj = {
+		"employees":
+			[
+			{"firstName":"Aaron", "lastName":"Rose"},
+			{"firstName":"Star", "lastName":"Rose"}, 
+			{"firstName":"Riley", "lastName":"Reeves"},
+			{"firstName":"Reagan", "lastName":"Reeves"}
+			]
+		};
+  function getEmployee() {
+	var resultsValue = "";
+			
+	var stringCheck = document.getElementById('NumberA').value;
+		console.log(stringCheck);
+	if(!isNaN(stringCheck) ) {
+		if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
+			resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
+			empObj.employees[stringCheck - 1].firstName = "Bob"
+		}
+		else {
+			resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
+		}
+	}
+		else {
+			resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
+	}
+			console.log(resultsValue);
+			document.getElementById("results4").innerHTML = resultsValue;
+		}
+  </script>
+
 </head>
 <body>
-	var score = 56;
-	var msg = '';
-
-	function game() {
-		msg += 'Run! ';
-}
-
-	if (score >= 35) {
-		game();
-	msg += 'Winner.';
-}
-
-	var el = document.getElementById('answer');
-		el.innerHTML = msg;
+  <div class="container body-content">
+	<div class="row">
+        	<div class="col-md-12">
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - Functions</h2>
+                    <a href="index.html">Home</a><br/><br/>
+        </div>
+	<div class="row">
+	<div class="col-md-12"><hr /></div>
+	</div>
+        <div class="col-md-12">
+		<h3>Rectangle and Shape Inheritance objects and functions</h3>
+			<p id="results1"></p>
+			<p id="results2"></p>
+			<p id="results3"></p>
+	</div>
+        <div class="col-md-12">
+		<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
+			<button onclick="getEmployee()">Get Employee</button><br /><br />
+        </div>
+        <div class="col-md-12">
+		<h3>Properties</h3>
+			<p id="results4"></p>
+	</div>
+        </div>
+  </div>
 </body>
+  <script>
+	function Shape() {
+		this.x = 0;
+		this.y = 0;
+	}
+	Shape.prototype.move = function(x, y) {
+		this.x += x;
+		this.y += y;
+		console.info('Shape moved.');
+	};
+	function Rectangle() {
+		Shape.call(this); 
+	}
+	Rectangle.prototype = Object.create(Shape.prototype);
+	Rectangle.prototype.constructor = Rectangle;
+		var rect = new Rectangle();
+			console.log('Is rect an instance of Rectangle?', rect instanceof Rectangle); 
+			console.log('Is rect an instance of Shape?', rect instanceof Shape); 
+			rect.move(1, 1); 
+		
+		document.getElementById("results1").innerHTML = "Is rect an instance of Rectangle? " + (rect instanceof Rectangle);
+		document.getElementById("results2").innerHTML = "Is rect an instance of Shape? " + (rect instanceof Shape);
+		var address = {
+			street: "",
+			city: "",
+			state: "",
+			postalCode: "",
+			get getAddress() {
+				return street + "" + city + "" + state + "" + postalCode;
+			},
+			set setAddress(parseAddress) {
+				var parts = parseAddress.split(", ");
+				this.street = parts[0] || "";
+				this.city = parts[1] || "";
+				this.state = parts[2] || "";
+				this.postalCode = parts[3] || "";
+			}
+		}
+		address.setAddress = "";
+		document.write(address.getAddress);
+	</script>
 </html>
