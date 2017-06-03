@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>JSON</title>
+<head>
+	<title>JSON</title>
 
-		<meta charset="utf-8" />
-    <meta name="Author" content="Aaron Rose" />
+	<meta charset="utf-8" />
+    	<meta name="Author" content="Aaron Rose" />
     
-    <link rel="stylesheet" href="content/main.css" />
-		<script src="scripts/main.js"></script>
+    	<link rel="stylesheet" href="content/main.css" />
     
     <script>
 		var empObj ={
