@@ -46,7 +46,7 @@
 					<div class="col-md-12"><hr /></div>
 				</div>
 				<div class="col-md-12">
-					<button onclick="domTestAddP('This is New')">Add paragraph Element</button><br /><br />
+					<button onclick="domTestAddP('Can you guess who said these other two quotes?')">Add paragraph Element</button><br /><br />
 
 					<label>Enter YouTube Video URL: </lable> <input id="YouTubeId" type="text" value="hM9h1wN4rfU"></input><br />
 					<button onclick="domTestAddYouTube(document.getElementById('YouTubeId').value)">Add YouTube Video</button><br /><br />
