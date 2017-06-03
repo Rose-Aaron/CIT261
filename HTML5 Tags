@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>HTML 5 Tags</title>
+<head>
+	<title>HTML 5 Tags</title>
     
- 		<meta charset="utf-8" />
-		<meta name="Author" content="Aaron Rose" />
+ 	<meta charset="utf-8" />
+	<meta name="Author" content="Aaron Rose" />
 
-    <link rel="stylesheet" href="content/main.css" />
-		<script src="scripts/main.js"></script>
+	<link rel="stylesheet" href="content/main.css" />
     
 </head>
 	<body>
@@ -33,16 +32,13 @@
                 </div>
                 <div class="col-md-12">
 					<audio controls>
-						<source src="content/audio.mp3" type="audio/mpeg">
+						<source src="images/formula-1-daniel_si...(1).mp3" type="audio/mpeg">
 						Your browser does not support the audio tag.
 					</audio>
                 </div>
                 <div class="col-md-12">
-					<embed type="application/x-shockwave-flash" src="content/shockwave.swf" width="640" height="420">
-                </div>
-                <div class="col-md-12">
 					<video width="320" height="240" controls>
-						<source src="content/video.mp4" type="video/mp4">
+						<source src="images/video.mp4" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
                 </div>
