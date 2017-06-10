@@ -100,40 +100,40 @@
 		</script>
 </head>
 <body>
-		<div class="container body-content">
-			<div class="row">
-                <div class="col-md-12">
+		<div>
+			<div>
+                <div>
                     <h1>Aaron Rose</h1>
                     <h2>CIT 261 - Local Storage API</h2>
                     <a href="index.html">Home</a><br/><br/>
                 </div>
-				<div class="row">
-					<div class="col-md-12"><hr /></div>
+				<div>
+					<div><hr /></div>
 				</div>
-				<div class="col-md-12">
-					<label>Enter StorageKey: </lable> <input id="StorageKey" type="text" value=""></input><br /><hr /><br />
+				<div>
+					<label>Enter StorageKey: </label> <input id="StorageKey" type="text" value=""></input><br /><hr /><br />
 				</div>
-                <div class="col-md-12">
+                <div>
 					<p>Enter a simple comma separated list to create an array</p>
-					<label>Enter a Comma Seperated List: </lable> <input id="ParseArray" type="text" value=""></input><br />
+					<label>Enter a Comma Seperated List: </label> <input id="ParseArray" type="text" value=""></input><br />
 					<button onclick="createArray()">Store Array</button><br /><br />
                 </div>
-                <div class="col-md-12">
+                <div>
 					<p>Use a complex JSON object to demonstrate Complex objects</p>
 					<p>
 						<!-- http://json.org/example.html -->
 						{"menu": {"id": "file","value": "File","popup": {"menuitem": [{"value": "New", "onclick": "CreateNewDoc()"},{"value": "Open", "onclick": "OpenDoc()"},{"value": "Close", "onclick": "CloseDoc()"}]}}}
 					</p>
-					<label>Enter a JSON string: </lable> <textarea id="GrabJson" type="text" value=""></textarea><br />
+					<label>Enter a JSON string: </label> <textarea id="GrabJson" type="text" value=""></textarea><br />
 					<button onclick="storeJson()">Store JSON Object</button><br /><br />
                 </div>
-                <div class="col-md-12">
+                <div>
 					<button onclick="dumpLocalStorage()">Display Local Storage</button><br /><br />
                 </div>
-                <div class="col-md-12">
+                <div>
 					<button onclick="clearStorage()">Clear Local Storage (Delete all data)</button><br /><br />
                 </div>
-				<div class="col-md-12">
+				<div>
 					<p id="results"></p><br /><br /><br /><br />
 				</div>
             </div>
