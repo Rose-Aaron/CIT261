@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript Events</title>
+
+    <meta charset="utf-8" />
+    <meta name="Author" content="Aaron Rose" />
+    
+    <link rel="stylesheet" href="content/main.css" />
+		<script src="scripts/main.js"></script>
+    
+    <script>
+			window.addEventListener("resize", function() {				
+				document.getElementById("demo1").innerHTML = Math.random();
+			});
+			window.addEventListener("click", function() {
+				console.log("Did it work?");
+				document.getElementById("demo2").innerHTML = "Clicked";
+			});
+			window.addEventListener("dblclick", function() {
+				document.getElementById("demo2").innerHTML = "Double Clicked";
+			});
+			/* http://stackoverflow.com/questions/7790725/javascript-track-mouse-position */
+			(function() {
+				document.onmousemove = handleMouseMove;
+				function handleMouseMove(event) {
+					var dot, eventDoc, doc, body, pageX, pageY;
+					event = event || window.event; // IE-ism
+					if (event.pageX == null && event.clientX != null) {
+						eventDoc = (event.target && event.target.ownerDocument) || document;
+						doc = eventDoc.documentElement;
+						body = eventDoc.body;
+						event.pageX = event.clientX +
+						(doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+						(doc && doc.clientLeft || body && body.clientLeft || 0);
+						event.pageY = event.clientY +
+						(doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+						(doc && doc.clientTop  || body && body.clientTop  || 0 );
+					}
+					document.getElementById("demo3").innerHTML = "Pos: " + event.pageX + "," + event.pageY;
+				}
+			})();
+			function changeText() {
+				var innerText = document.getElementById("ChangeText").innerHTML;
+				console.log(innerText);
+				switch(innerText)
+				{
+					case "Click me to Change the Text":
+						innerText = "Click me Again";
+					break;
+					case "Click me Again":
+						innerText = "Ouch not so Hard!";
+					break;
+					default:
+						innerText = "Click me to Change the Text";
+					break;
+				}
+				document.getElementById("ChangeText").innerHTML = innerText;
+			}
+		</script>
+    </head>
+	<body id="bodyClick">
+		<div>
+			<div>
+                <div>
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - JavaScript Events</h2>
+                    <a href="index.html">Home</a><br/><br/>
+                </div>
+				<div>
+					<div><hr /></div>
+				</div>
+                <div>
+					<p id="ChangeText" class="redBackgroundWhiteText" onclick="changeText()">Click me to Change the Text</p>
+                </div>
+                <div>
+					<p id="demo1"></p>
+					<p id="demo2"></p>
+					<p id="demo3"></p>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
