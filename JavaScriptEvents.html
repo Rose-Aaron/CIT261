@@ -45,14 +45,14 @@
 				console.log(innerText);
 				switch(innerText)
 				{
-					case "Click me to Change the Text":
-						innerText = "Click me Again";
+					case "Click here to Change the Text":
+						innerText = "Click Again";
 					break;
-					case "Click me Again":
-						innerText = "Ouch not so Hard!";
+					case "Click Again":
+						innerText = "Is that all you got?";
 					break;
 					default:
-						innerText = "Click me to Change the Text";
+						innerText = "Click here to Change the Text";
 					break;
 				}
 				document.getElementById("ChangeText").innerHTML = innerText;
@@ -71,7 +71,7 @@
 					<div><hr /></div>
 				</div>
                 <div>
-					<p id="ChangeText" class="redBackgroundWhiteText" onclick="changeText()">Click me to Change the Text</p>
+					<p id="ChangeText" class="redBackgroundWhiteText" onclick="changeText()">Click here to Change the Text</p>
                 </div>
                 <div>
 					<p id="demo1"></p>
