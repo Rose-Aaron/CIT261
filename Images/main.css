@@ -52,3 +52,57 @@ th {
     padding: 0;
 }
 
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.divHeight {
+    min-height: 40px;
+}
+
+.redBackgroundWhiteText {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.incomplete {
+    font-size: larger;
+    font-weight: bold;
+    color: red;
+}
+
+.review {
+    font-size: larger;
+    font-weight: bold;
+    color: orange;
+}
+
+.complete {
+    font-size: larger;
+    font-weight: bold;
+    color: green;
+}
