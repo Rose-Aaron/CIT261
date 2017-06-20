@@ -7,37 +7,6 @@
   <meta name="Author" content="Aaron Rose" />
   
   <link rel="stylesheet" href="content/main.css" />
-  <script>
-	var empObj = {
-		"employees":
-			[
-			{"firstName":"Aaron", "lastName":"Rose"},
-			{"firstName":"Star", "lastName":"Rose"}, 
-			{"firstName":"Riley", "lastName":"Reeves"},
-			{"firstName":"Reagan", "lastName":"Reeves"}
-			]
-		};
-  function getEmployee() {
-	var resultsValue = "";
-			
-	var stringCheck = document.getElementById('NumberA').value;
-		console.log(stringCheck);
-	if(!isNaN(stringCheck) ) {
-		if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
-			resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
-			empObj.employees[stringCheck - 1].firstName = "Bob"
-		}
-		else {
-			resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
-		}
-	}
-		else {
-			resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
-	}
-			console.log(resultsValue);
-			document.getElementById("results4").innerHTML = resultsValue;
-		}
-  </script>
 
 </head>
 <body>
@@ -51,62 +20,115 @@
 	<div>
 	<div><hr /></div>
 	</div>
-        <div>
-		<h3>Rectangle and Shape Inheritance objects and functions</h3>
-			<p id="results1"></p>
-			<p id="results2"></p>
-			<p id="results3"></p>
-	</div>
-        <div>
-		<label>Enter a Number: </label> <input id="NumberA" type="text" value=""></input><br />
-			<button onclick="getEmployee()">Get Employee</button><br /><br />
-        </div>
-        <div>
-		<h3>Properties</h3>
-			<p id="results4"></p>
-	</div>
-        </div>
-  </div>
-</body>
-  <script>
-	function Shape() {
-		this.x = 0;
-		this.y = 0;
-	}
-	Shape.prototype.move = function(x, y) {
-		this.x += x;
-		this.y += y;
-		console.info('Shape moved.');
-	};
-	function Rectangle() {
-		Shape.call(this); 
-	}
-	Rectangle.prototype = Object.create(Shape.prototype);
-	Rectangle.prototype.constructor = Rectangle;
-		var rect = new Rectangle();
-			console.log('Is rect an instance of Rectangle?', rect instanceof Rectangle); 
-			console.log('Is rect an instance of Shape?', rect instanceof Shape); 
-			rect.move(1, 1); 
+	<h3>Form</h3>
+	<form>
+			    <fieldset>
+		                <label for="name">Name: <input type="text" name="name" id="name"></label><br>
+		                <label for="phone">Phone: <input type="text" name="phone" id="phone"></label><br>
+		                <label for="address">Address: <input type="text" name="address" id="address"></label><br>
+		                <label for="email">Email: <input type="email" name="email" id="email"></label><br>
+			    </fieldset>
+			    <fieldset>
+		                <input type="button" name="button" id="action" value="Add" onClick="addContact()">
+                            </fieldset>
+		        </form>
+<script type="text/javascript">
+		            function Contact(name, phone, address, email) {
+		                this.name = name;
+		                this.phone = phone;
+		                this.address = address;
+		                this.email = email;
+		            }
+
+		            function addContact() {
+		                var nameElement = document.getElementById('name');
+		                var phoneElement = document.getElementById('phone');
+		                var addressElement = document.getElementById('address');
+		                var emailElement = document.getElementById('email');
+		                var name = nameElement.value;
+		                var phone = phoneElement.value;
+		                var address = addressElement.value;
+		                var email = emailElement.value;
+		                var newContact = new Contact(name, phone, address, email);
+		                var contactList = JSON.parse(localStorage.getItem("contactList"));
+		                if(contactList === null) {
+		                    contactList = Array();
+		                }
+		                contactList.push(newContact);
+		                localStorage.setItem("contactList", JSON.stringify(contactList));
+		                nameElement.value = "";
+		                phoneElement.value = "";
+		                addressElement.value = "";
+		                emailElement.value = "";
+		                updateTable();
+		            }
+            
+		            function deleteContact(index) {
+		                var contactList = JSON.parse(localStorage.getItem("contactList"));
+		                contactList.splice(index,1);
+		                localStorage.setItem("contactList", JSON.stringify(contactList));
+		                updateTable();
+		            }
+		            
+		            function updateTable() {
+		                var table = document.getElementById('contact_list');
+				var div = document.getElementById('contact_list_div');
+		                var contactList = JSON.parse(localStorage.getItem("contactList"));
+		                var newTable = document.createElement('table');
+		                newTable.id = 'contact_list';
+		                var newTableHead = document.createElement('thead');
+		                var newTableHeadRow = document.createElement('tr');
+		                var newTableHeadName = document.createElement('th');
+		                newTableHeadName.appendChild(document.createTextNode('Name'));
+		                var newTableHeadPhone = document.createElement('th');
+		                newTableHeadPhone.appendChild(document.createTextNode('Phone'));
+		                var newTableHeadAddress = document.createElement('th');
+		                newTableHeadAddress.appendChild(document.createTextNode('Address'));
+		                var newTableHeadEmail = document.createElement('th');
+		                newTableHeadEmail.appendChild(document.createTextNode('Email'));
+		                var newTableHeadAction = document.createElement('th');
+		                newTableHeadAction.appendChild(document.createTextNode('Action'));
+		                
+		                newTableHeadRow.appendChild(newTableHeadName);
+		                newTableHeadRow.appendChild(newTableHeadPhone);
+		                newTableHeadRow.appendChild(newTableHeadAddress);
+		                newTableHeadRow.appendChild(newTableHeadEmail);
+		                newTableHeadRow.appendChild(newTableHeadAction);
+		                
+		                newTableHead.appendChild(newTableHeadRow);
+		                var newTableBody = document.createElement('tbody');
+		                
+		                if(contactList !== null) {
+		                    var count = 0;
+		                    contactList.forEach(function(rowData) {
+		                        var row = document.createElement('tr');
 		
-		document.getElementById("results1").innerHTML = "Is rect an instance of Rectangle? " + (rect instanceof Rectangle);
-		document.getElementById("results2").innerHTML = "Is rect an instance of Shape? " + (rect instanceof Shape);
-		var address = {
-			street: "",
-			city: "",
-			state: "",
-			postalCode: "",
-			get getAddress() {
-				return street + "" + city + "" + state + "" + postalCode;
-			},
-			set setAddress(parseAddress) {
-				var parts = parseAddress.split(", ");
-				this.street = parts[0] || "";
-				this.city = parts[1] || "";
-				this.state = parts[2] || "";
-				this.postalCode = parts[3] || "";
-			}
-		}
-		address.setAddress = "";
-		document.write(address.getAddress);
-	</script>
+		                        var nameCell = document.createElement('td');
+		                        nameCell.appendChild(document.createTextNode(rowData.name));
+		                        row.appendChild(nameCell);
+		                        var phoneCell = document.createElement('td');
+		                        phoneCell.appendChild(document.createTextNode(rowData.phone));
+		                        row.appendChild(phoneCell);
+		                        var addressCell = document.createElement('td');
+		                        addressCell.appendChild(document.createTextNode(rowData.address));
+		                        row.appendChild(addressCell);
+		                        var emailCell = document.createElement('td');
+		                        emailCell.appendChild(document.createTextNode(rowData.email));
+		                        row.appendChild(emailCell);
+		                        var actionCell = document.createElement('td');
+		                        actionCell.innerHTML = "<input type=\"button\" name=\"button\" value=\"Delete\" onClick=\"deleteContact(" + count + ")\">";
+		                        row.appendChild(actionCell);
+		                        newTableBody.appendChild(row);
+		                        count++;
+		                    });
+		                }
+                
+		                newTable.appendChild(newTableHead);
+		                newTable.appendChild(newTableBody);
+		                div.replaceChild(newTable, table);
+		            }
+            
+		            updateTable();
+		        </script>
+</body>
 </html>
