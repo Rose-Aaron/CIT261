@@ -10,8 +10,39 @@
     
   </head>
 	<body>
+                <div>
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - DOM Manipulation</h2>
+                    <a href="index.html">Home</a>
+                </div>
 
-  <script type="text/javascript">
+	<ul id="myList">
+  		<li>Basketball</li>
+  		<li>Football</li>
+	</ul>
+	<p>Click to insert an item before the list.</p>
+	<button onclick="myFunction()">Insert</button>
+
+	<script>
+		function myFunction() {
+    		var newItem = document.createElement("LI");
+    		var textnode = document.createTextNode("Baseball");
+    		newItem.appendChild(textnode);
+
+    		var list = document.getElementById("myList");
+    		list.insertBefore(newItem, list.childNodes[0]);
+		}
+	</script>	
+	<p>Click to remove the inserted item from the list.</p>
+	<button onclick="myFunction()">Remove</button>
+	<script>
+		function myFunction() {
+    		var list = document.getElementById("myList");
+    		list.removeChild(list.childNodes[0]);
+		}
+	</script>
+
+  	<script type="text/javascript">
 			function domTestAddP(inputText)
 			{
 				var para = document.createElement("P");
@@ -34,39 +65,9 @@
 			}
 		</script>
     	
-    <div>
+    	<div>
 			<div>
-                <div>
-                    <h1>Aaron Rose</h1>
-                    <h2>CIT 261 - DOM Manipulation</h2>
-                    <a href="index.html">Home</a>
-                </div>
-	<div>	
-	<ul id="myList">
-  		<li>Basketball</li>
-  		<li>Football</li>
-	</ul>
-	<p>Click to insert an item before the list.</p>
-	<button onclick="myFunction()">Insert</button>
-	</div>
-	<script>
-		function myFunction() {
-    		var newItem = document.createElement("LI");
-    		var textnode = document.createTextNode("Baseball");
-    		newItem.appendChild(textnode);
 
-    		var list = document.getElementById("myList");
-    		list.insertBefore(newItem, list.childNodes[0]);
-		}
-	</script>	
-	<p>Click to remove the inserted item from the list.</p>
-	<button onclick="myFunction()">Remove</button>
-	<script>
-		function myFunction() {
-    		var list = document.getElementById("myList");
-    		list.removeChild(list.childNodes[0]);
-		}
-	</script>
 				<div>
 					<div><hr /></div>
 				</div>
