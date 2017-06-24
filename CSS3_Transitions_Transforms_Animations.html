@@ -8,15 +8,8 @@
     
     <link rel="stylesheet" href="content/main.css" />
     
-  </head>
-  <body>
-    <div>
-      <h1>Aaron Rose</h1>
-      <h2>CSS3 Transitions, Transforms, and Animations</h2>
-      <a href="index.html">Home</a><br/><br/>
-    </div>
-  <style> 
-    div {
+<style> 
+    div#transition {
     	width: 200px;
     	height: 200px;
     	background: purple;
@@ -29,9 +22,8 @@
     div:hover {
     width: 400px;
     }
-    <p>Hover over the image with your mouse to see the transition.</p>
     
-    div {
+    div#animation {
     	width: 200px;
     	height: 200px;
     	background-color: black;
@@ -47,9 +39,8 @@
     	75%  {background-color:purple; left:0px; top:400px;}
     	100% {background-color:yellow; left:0px; top:0px;}
     }
-    <p>This is my example of animation.</p>
 	  
-    div {
+    div#transform {
     	width: 300px;
     	height: 100px;
     	background-color: orange;
@@ -57,6 +48,29 @@
     	transform: translate(50px,100px); 
     }
   </style>
-    <p>This is my example of transform.</p>
+		
+  </head>
+  <body>
+    <div>
+      <h1>Aaron Rose</h1>
+      <h2>CSS3 Transitions, Transforms, and Animations</h2>
+      <a href="index.html">Home</a><br/><br/>
+    </div>
+    
+    <div id="transition">
+      <p>Hover over the image to see the transition.</p>
+    </div>
+	  
+	<br><br>
+	  
+    <div id="animation">
+      <p>This is my example of an animation.</p>
+    </div>
+	  
+	<br><br>
+	  
+    <div id="transform">
+      <p>This is my example of a transform.</p>
+    </div>
   </body>
 </html>
