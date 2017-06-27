@@ -9,47 +9,81 @@
     
     <link rel="stylesheet" href="content/main.css" />
 
-		<style>
-			#container1 
-			{
-				width: 300px;
-				height: 300px;
-				position: relative;
-				background: yellow;
-			}
-			#animate1 
-			{
-				width: 50px;
-				height: 50px;
-				position: absolute;
-				background: red;
-			}
-			@keyframes example 
-			{
-				0%   {background-color: red;}
-				25%  {background-color: yellow;}
-				50%  {background-color: blue;}
-				100% {background-color: green;}
-			}
-			#animate2 
-			{
-				width: 100px;
-				height: 100px;
-				background-color: red;
-				animation-name: example;
-				animation-duration: 4s;
-			}
-			#animate3
-			{
-				width: 100px;
-				height: 100px;
-				position: relative;
-				background-color: red;
-				animation-name: example;
-				animation-duration: 4s;
-				animation-iteration-count: 3;
-				animation-direction: alternate;
-			}
+	<style>
+	.csstransition {
+		border-style: solid 1px;
+		display: block;
+		width: 300px;
+		height: 300px;
+		background-color: rgb(24,24,24);
+		color: #FFFFFF;
+		text-align: center;
+		-webkit-transition:all 2s ease-in-out;
+		transition:all 2s ease-in-out;
+		}
+	.csstransition:hover {
+		background-color: rgb(1,1,137);
+		width:200px;
+		height:200px;
+		}
+	h6 {
+	overflow: hidden;
+	}
+	.first-code,.second-code {
+		display: block;
+		overflow: hidden;
+		transition: all 500ms ease-in-out;
+	}
+	.first-code {
+		color: white !important;
+		height: auto;
+		opacity: 1;
+		width: auto;
+	}
+	.second-code {
+		color: #fff;
+		height: 0;
+		opacity: 0;
+		width: 0;
+	}
+	.csstransition:hover .first-code {
+		height: 0px;
+		opacity: 0;
+		width: 0px;
+	}
+	.csstransition:hover .second-code {
+		height: auto;
+		opacity: 1;
+		width: auto;
+	}
+			
+	.cssanimation {
+		width: 200px;
+        	height: 200px;
+        	background-color: red;
+		opacity: 0.5;
+		position:relative;
+		-webkit-animation-name: spock;
+		-webkit-animation-duration: 5s;
+		animation-name: spock;
+		animation-duration: 5s;
+		animation-delay: 1s;
+		animation-direction: alternate;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease-in;
+	}
+	@-webkit-keyframes spock{
+		0%   {background-color:red; left:0px; top:0px;}
+		33%  {background-color:white; left:600px; top:200px;}
+		66%  {background-color:blue; left:0px; top:300px;}
+		100% {background-color:red; left:0px; top:0px;}
+	}
+	@keyframes spock{
+		0%   {background-color:red; left:0px; top:0px;}
+		33%  {background-color:white; left:600px; top:200px;}
+		66%  {background-color:blue; left:0px; top:300px;}
+		100% {background-color:red; left:0px; top:0px;}
+	}
 		</style>
 		
 	</head>
@@ -84,22 +118,4 @@
             </div>
         </div>
 	</body>
-
-	<script>
-		function myMove() {
-			var elem = document.getElementById("animate1");   
-			var pos = 0;
-			var id = setInterval(frame, 5);
-			function frame() {
-				if (pos == 250) {
-					clearInterval(id);
-				} else {
-					pos++;
-					elem.style.top = pos + 'px'; 
-					elem.style.left = pos + 'px';
-				}
-			}
-		}
-		myMove();
-	</script>
 </html>
