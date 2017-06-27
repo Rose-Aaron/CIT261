@@ -8,141 +8,34 @@
   
   <link rel="stylesheet" href="content/main.css" />
 
-<script>
-function yearChange() {
-    var yearText = year.options[year.selectedIndex].text;
-    var requestUrl = baseUrl + "/v2/makes?fmt=json&api_key=" + apiKey + "&year=" + yearText;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(xhttp.responseText);
-            var oldMakesSelect = document.getElementById('make');
-            var makeLabel = document.getElementById('makeLabel');
-            var makesSelect = document.createElement('select');
-            makesSelect.name = "make";
-            makesSelect.id = "make";
-            var firstOption = document.createElement('option');
-            firstOption.textContent = "Select Make";
-            makesSelect.appendChild(firstOption);
-            for(var i = 0; i < response.makesCount; i++) {
-                var option = document.createElement('option');
-                option.value = response.makes[i].niceName;
-                option.textContent = response.makes[i].name;
-                makesSelect.appendChild(option);
-            };
-            makeLabel.replaceChild(makesSelect, oldMakesSelect);
-            makesSelect.addEventListener('change', makeChange);
-        }
-    };
-    xhttp.open("GET", requestUrl, true);
-    xhttp.send();
-}
-
-function makeChange() {
-    var yearText = year.options[year.selectedIndex].text;
-    var make = document.getElementById('make');
-    var makeValue = make.options[make.selectedIndex].value;
-    var requestUrl = baseUrl + "/v2/" + makeValue + "?year=" + yearText + "&fmt=json&api_key=" + apiKey;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(xhttp.responseText);
-            var oldModelSelect = document.getElementById('model');
-            var modelLabel = document.getElementById('modelLabel');
-            var modelSelect = document.createElement('select');
-            modelSelect.name = "model";
-            modelSelect.id = "model";
-            var firstOption = document.createElement('option');
-            firstOption.textContent = "Select Model";
-            modelSelect.appendChild(firstOption);
-            for(var i = 0; i < response.models.length; i++) {
-                var option = document.createElement('option');
-                option.value = response.models[i].niceName;
-                option.textContent = response.models[i].name;
-                modelSelect.appendChild(option);
-            };
-            modelLabel.replaceChild(modelSelect, oldModelSelect);
-            modelSelect.addEventListener('change', modelChange);
-        }
-    };
-    xhttp.open("GET", requestUrl, true);
-    xhttp.send();
-    var submodelElement = document.getElementById('submodel');
-    var emptyOption = document.createElement('option');
-    while (submodelElement.hasChildNodes()) {
-        submodelElement.removeChild(submodelElement.lastChild);
-    }
-    submodelElement.appendChild(emptyOption);
-    submodelElement.disabled = true;
-}
-
-function modelChange() {
-    var yearText = year.options[year.selectedIndex].text;
-    var make = document.getElementById('make');
-    var makeValue = make.options[make.selectedIndex].value;
-    var model = document.getElementById('model');
-    var modelValue = model.options[model.selectedIndex].value;
-    var requestUrl = baseUrl + "/v2/" + makeValue + "/" + modelValue + "/" + yearText + "?fmt=json&api_key=" + apiKey;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(xhttp.responseText);
-            var oldSubmodelSelect = document.getElementById('submodel');
-            var submodelLabel = document.getElementById('submodelLabel');
-            var modelYearIdInput = document.getElementById('modelYearId');
-            var submodelSelect = document.createElement('select');
-            submodelSelect.name = "submodel";
-            submodelSelect.id = "submodel";
-            var firstOption = document.createElement('option');
-            firstOption.textContent = "Select Submodel";
-            submodelSelect.appendChild(firstOption);
-            modelYearIdInput.value = response.id;
-            response.styles.forEach(function(style) {
-                var option = document.createElement('option');
-                option.value = style.id;
-                option.textContent = style.name;
-                submodelSelect.appendChild(option);
-            });
-            submodelLabel.replaceChild(submodelSelect, oldSubmodelSelect);
-            submodelSelect.addEventListener('change', submodelChange);
-        }
-    };
-    xhttp.open("GET", requestUrl, true);
-    xhttp.send();
-}
-
-function submodelChange() {
-    var styleElement = document.getElementById('submodel');
-    var styleId = styleElement.options[styleElement.selectedIndex].value;
-    var engineRequestUrl = baseUrl + "/v2/styles/" + styleId + "/engines?availability=standard&fmt=json&api_key=" + apiKey;
-    var engineXhttp = new XMLHttpRequest();
-    engineXhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(engineXhttp.responseText);
-            var engineCode = response.engines[0].code;
-            var engineElement = document.getElementById('engine');
-            engineElement.value = engineCode;
-        }
-    };
-    engineXhttp.open("GET", engineRequestUrl, true);
-    engineXhttp.send();
-    var transmissionRequestUrl = baseUrl + "/v2/styles/" + styleId + "/transmissions?availability=standard&fmt=json&api_key=" + apiKey;
-    var transmissionXhttp = new XMLHttpRequest();
-    transmissionXhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(transmissionXhttp.responseText);
-            var transmissionCode = response.transmissions[0].transmissionType;
-            var transmissionElement = document.getElementById('transmission');
-            transmissionElement.value = transmissionCode;
-        }
-    };
-    transmissionXhttp.open("GET", transmissionRequestUrl, true);
-    transmissionXhttp.send();
-    var addGarageFormBtn = document.getElementById('addGarageFormBtn');
-    addGarageFormBtn.addEventListener('click', function(e) { addVehicle(e); });
-    addGarageFormBtn.removeAttribute("disabled");
-}
-</script>
+<script type="text/javascript">
+			/* Note: AJAX examples only work from the browser. There is a link to a working example in the body below.
+			*/
+			function loadXMLDoc()
+			{
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+				  {// code for IE7+, Firefox, Chrome, Opera, Safari
+				  	xmlhttp=new XMLHttpRequest();
+				  	if (xmlhttp){
+				  		document.getElementById("error").innerHTML = "XMLHttpRequest works for this browser.";
+				  	}
+				  }
+				else
+				  {// code for IE6, IE5
+				  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xmlhttp.onreadystatechange=function()
+				  {
+					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					    {
+					    	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+					    }
+				  }
+				xmlhttp.open("GET","ajax-basic-text.txt",true);
+				xmlhttp.send();
+			}
+		</script>
 
 </head>
 <body>
@@ -157,63 +50,11 @@ function submodelChange() {
   <div><hr /></div>
 	</div>
 
-<form class="form" id="addGarageForm">
-    <label for="year">Year: 
-        <select name="year" id="year">
-            <option>Select Year</option>
-            <option>2017</option>
-            <option>2016</option>
-            <option>2015</option>
-            <option>2014</option>
-            <option>2013</option>
-            <option>2012</option>
-            <option>2011</option>
-            <option>2010</option>
-            <option>2009</option>
-            <option>2008</option>
-            <option>2007</option>
-            <option>2006</option>
-            <option>2005</option>
-            <option>2004</option>
-            <option>2003</option>
-            <option>2002</option>
-            <option>2001</option>
-            <option>2000</option>
-            <option>1999</option>
-            <option>1998</option>
-            <option>1997</option>
-            <option>1996</option>
-            <option>1995</option>
-            <option>1994</option>
-            <option>1993</option>
-            <option>1992</option>
-            <option>1991</option>
-            <option>1990</option>
-        </select>
-    </label>
-    <label for="make" id="makeLabel">Make:
-        <select name="make" id="make" disabled>
-            <option></option>
-        </select>
-    </label>
-    <label for="model" id="modelLabel">Model:
-        <select name="model" id="model" disabled>
-            <option></option>
-        </select>
-    </label>
-    <input type="hidden" id="modelYearId">
-    <label for="submodel" id="submodelLabel">Submodel:
-        <select name="submodel" id="submodel" disabled>
-            <option></option>
-        </select>
-    </label>
-    <label for="mileage" id="mileageLabel">Mileage:
-        <input type="number" name="mileage" id="mileage">
-    </label>
-    <input type="hidden" id="engine">
-    <input type="hidden" id="transmission">
-    <button class="addBtn" id="addGarageFormBtn" disabled>
-</form>
+	<div id="myDiv"><h2>Let AJAX change this text</h2></div>
+	<button type="button" onclick="loadXMLDoc()">Change Content</button>
+	<h2>Any messages will be displayed here</h2>
+        <p id="error"></p>
+
 </body>
  
 </html>
