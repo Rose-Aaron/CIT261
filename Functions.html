@@ -7,7 +7,146 @@
   <meta name="Author" content="Aaron Rose" />
   
   <link rel="stylesheet" href="content/main.css" />
+<script type="text/javascript">
+var person = 0;
+var person1;
+var person2;
+var person3;
+var person4;
+var select;
+/******************************************
+* Create object function will let the user 
+* have the choice to create an index of objects 
+*******************************************/
+function createObject(){
+    var toy = new Object();
+    this.color = document.myForm.color.value;
+    this.size  = document.getElementById("size").value;
+    this.isGood = document.getElementById("good").value;
+    this.play = function(){
+        this.status = "playing";
+    }
+    document.getElementById("displayObject").innerHTML = "Your toy is " + this.size + " and " + this.color + ". I like it (" + this.isGood + ").";
+}
 
+
+/******************************************
+* Create another function that lets the user 
+* to have the choice to create a person.
+*******************************************/
+function Parents() {
+    this.name = document.getElementById('name').value;
+    this.gender = document.getElementById('gender').value;
+    this.age = document.getElementById('age').value;
+    this.profile =	function() { 
+        return  "Name: " + this.name + "<br>" + 
+            "Gender: " + this.gender + "<br>" + 
+            "Age: " + this.age + "<br>" + 			
+            "Hobby: " + this.hobby + "<br>";
+    }
+    this.changeName = function (name) {
+        this.name = name;
+    }
+}
+    
+/******************************************
+* Inheritance method applys here in the
+* function to create new objects.
+*******************************************/    
+function addObject () {
+    person += 1;
+    if (person == 1) {
+        person1 = new Parents();
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("person1");
+        btn.appendChild(t);
+        btn.addEventListener ("click", function() {
+            persons(1);
+        });
+        document.getElementById('output4').appendChild(btn);
+    }
+    else if(person == 2) {
+        person2 = new Parents();
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("person2");
+        btn.appendChild(t);
+        btn.addEventListener ("click", function() {
+            persons(2);
+        });
+        document.getElementById('output4').appendChild(btn);
+    }
+    else if(person == 3) {
+        person3 = new Parents();
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("person3");
+        btn.appendChild(t);
+        btn.addEventListener ("click", function() {
+            persons(3);
+        });
+        document.getElementById('output4').appendChild(btn);
+    }
+    else if(person == 4) {
+        person4 = new Parents();
+        var btn = document.createElement("BUTTON");
+        var t = document.createTextNode("person4");
+        btn.appendChild(t);
+        btn.addEventListener ("click", function() {
+            persons(4);
+        });
+        document.getElementById('output4').appendChild(btn);
+        document.getElementById('personInput').innerHTML = '';
+        return;
+    }
+    document.getElementById('name').value=''; 
+    document.getElementById('gender').value=''; 
+    document.getElementById('age').value='';
+}
+
+/******************************************
+* Select each person and its detalis when
+* user clicks the button for each.
+*******************************************/ 
+function persons(person){
+    select = person;
+    if (person == 1) {
+        document.getElementById('output').innerHTML = person1.profile();
+    }
+    else if (person == 2) {
+        document.getElementById('output').innerHTML = person2.profile();
+    }
+    else if (person == 3){
+        document.getElementById('output').innerHTML = person3.profile();
+    }
+    else if (person == 4) {
+        document.getElementById('output').innerHTML = person4.profile();
+    }
+}
+
+/******************************************
+* Add a new object to the person's list
+*******************************************/ 
+function hobby() {
+    if (select == 1) {
+        person1.hobby = document.getElementById('hobby').value;
+        document.getElementById('output').innerHTML = person1.profile();
+    }
+    else if (select == 2) {
+        person2.hobby = document.getElementById('hobby').value;
+        document.getElementById('output').innerHTML = person2.profile();
+    }
+    else if (select == 3) {
+        person3.hobby = document.getElementById('hobby').value;
+        document.getElementById('output').innerHTML = person3.profile();
+    }
+    else if (select == 4) {
+        person4.hobby = document.getElementById('hobby').value;
+        document.getElementById('output').innerHTML = person4.profile();
+    }
+    else {
+        document.getElementById('output2').innerHTML = "Please create object first!";
+    }
+}
+    </script>
 </head>
 <body>
   <div>
@@ -20,115 +159,41 @@
 	<div>
 	<div><hr /></div>
 	</div>
-	<h3>Contact Information</h3>
-	<form>
-			    <fieldset>
-		                <label for="name">Name: <input type="text" name="name" id="name"></label><br>
-		                <label for="phone">Phone: <input type="text" name="phone" id="phone"></label><br>
-		                <label for="address">Address: <input type="text" name="address" id="address"></label><br>
-		                <label for="email">Email: <input type="email" name="email" id="email"></label><br>
-			    </fieldset>
-			    <fieldset>
-		                <input type="button" name="button" id="action" value="Add" onClick="addContact()">
-                            </fieldset>
-		        </form>
-<script type="text/javascript">
-		            function Contact(name, phone, address, email) {
-		                this.name = name;
-		                this.phone = phone;
-		                this.address = address;
-		                this.email = email;
-		            }
+   <h3>Create your own toy</h3>
+         <form name="myForm">
 
-		            function addContact() {
-		                var nameElement = document.getElementById('name');
-		                var phoneElement = document.getElementById('phone');
-		                var addressElement = document.getElementById('address');
-		                var emailElement = document.getElementById('email');
-		                var name = nameElement.value;
-		                var phone = phoneElement.value;
-		                var address = addressElement.value;
-		                var email = emailElement.value;
-		                var newContact = new Contact(name, phone, address, email);
-		                var contactList = JSON.parse(localStorage.getItem("contactList"));
-		                if(contactList === null) {
-		                    contactList = Array();
-		                }
-		                contactList.push(newContact);
-		                localStorage.setItem("contactList", JSON.stringify(contactList));
-		                nameElement.value = "";
-		                phoneElement.value = "";
-		                addressElement.value = "";
-		                emailElement.value = "";
-		                updateTable();
-		            }
-            
-		            function deleteContact(index) {
-		                var contactList = JSON.parse(localStorage.getItem("contactList"));
-		                contactList.splice(index,1);
-		                localStorage.setItem("contactList", JSON.stringify(contactList));
-		                updateTable();
-		            }
-		            
-		            function updateTable() {
-		                var table = document.getElementById('contact_list');
-				var div = document.getElementById('contact_list_div');
-		                var contactList = JSON.parse(localStorage.getItem("contactList"));
-		                var newTable = document.createElement('table');
-		                newTable.id = 'contact_list';
-		                var newTableHead = document.createElement('thead');
-		                var newTableHeadRow = document.createElement('tr');
-		                var newTableHeadName = document.createElement('th');
-		                newTableHeadName.appendChild(document.createTextNode('Name'));
-		                var newTableHeadPhone = document.createElement('th');
-		                newTableHeadPhone.appendChild(document.createTextNode('Phone'));
-		                var newTableHeadAddress = document.createElement('th');
-		                newTableHeadAddress.appendChild(document.createTextNode('Address'));
-		                var newTableHeadEmail = document.createElement('th');
-		                newTableHeadEmail.appendChild(document.createTextNode('Email'));
-		                var newTableHeadAction = document.createElement('th');
-		                newTableHeadAction.appendChild(document.createTextNode('Action'));
-		                
-		                newTableHeadRow.appendChild(newTableHeadName);
-		                newTableHeadRow.appendChild(newTableHeadPhone);
-		                newTableHeadRow.appendChild(newTableHeadAddress);
-		                newTableHeadRow.appendChild(newTableHeadEmail);
-		                newTableHeadRow.appendChild(newTableHeadAction);
-		                
-		                newTableHead.appendChild(newTableHeadRow);
-		                var newTableBody = document.createElement('tbody');
-		                
-		                if(contactList !== null) {
-		                    var count = 0;
-		                    contactList.forEach(function(rowData) {
-		                        var row = document.createElement('tr');
+			<input type="text" id="color" name="color" placeholder="What Color?"/><br>
+			<input type="text" id="size" name="size" placeholder="What Size?"/><br>
+			<label>Do you like it?</label>
+			<select id="good">
+				<option value="true">Yes</option>
+				<option value="false">No</option>
+			</select><br>
+			<button id="button" type="button" value="submit" onclick="createObject()">Create Object</button>
+		</form>
+    
+        <p id="displayObject"></p>
+        
+    
+    <hr>
+    
+    <h3>Inheritance Example</h3>
+<div id="personInput">
+		<input type="text" id="name" placeholder="Name" /><br>
+		<input type="text" id="gender" placeholder="Gender" /><br>
+		<input type="text" id="age" placeholder="Age" /><br>
+		<button onclick="addObject()" id="button1">Creat Person</button>
+</div>
 		
-		                        var nameCell = document.createElement('td');
-		                        nameCell.appendChild(document.createTextNode(rowData.name));
-		                        row.appendChild(nameCell);
-		                        var phoneCell = document.createElement('td');
-		                        phoneCell.appendChild(document.createTextNode(rowData.phone));
-		                        row.appendChild(phoneCell);
-		                        var addressCell = document.createElement('td');
-		                        addressCell.appendChild(document.createTextNode(rowData.address));
-		                        row.appendChild(addressCell);
-		                        var emailCell = document.createElement('td');
-		                        emailCell.appendChild(document.createTextNode(rowData.email));
-		                        row.appendChild(emailCell);
-		                        var actionCell = document.createElement('td');
-		                        actionCell.innerHTML = "<input type=\"button\" name=\"button\" value=\"Delete\" onClick=\"deleteContact(" + count + ")\">";
-		                        row.appendChild(actionCell);
-		                        newTableBody.appendChild(row);
-		                        count++;
-		                    });
-		                }
-                
-		                newTable.appendChild(newTableHead);
-		                newTable.appendChild(newTableBody);
-		                div.replaceChild(newTable, table);
-		            }
-            
-		            updateTable();
-		        </script>
+		<div id="output2"></div><br>
+		<div id="output4"></div>
+		
+		<div id="output"></div>
+		<input type="text" id="hobby" placeholder="Hobby" />
+		<button onclick="hobby()">Set Hobby</button>
+		<div id="output4"></div>
+		<div id="output"></div>
+ 	
+</div>
 </body>
 </html>
