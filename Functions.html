@@ -7,6 +7,7 @@
   <meta name="Author" content="Aaron Rose" />
   
   <link rel="stylesheet" href="content/main.css" />
+	
 <script type="text/javascript">
 var person = 0;
 var person1;
@@ -14,10 +15,7 @@ var person2;
 var person3;
 var person4;
 var select;
-/******************************************
-* Create object function will let the user 
-* have the choice to create an index of objects 
-*******************************************/
+
 function createObject(){
     var toy = new Object();
     this.color = document.myForm.color.value;
@@ -26,14 +24,9 @@ function createObject(){
     this.play = function(){
         this.status = "playing";
     }
-    document.getElementById("displayObject").innerHTML = "Your toy is " + this.size + " and " + this.color + ". I like it (" + this.isGood + ").";
+    document.getElementById("displayObject").innerHTML = "Your shoes are " + this.size + " and " + this.color + ". You like it (" + this.isGood + ").";
 }
 
-
-/******************************************
-* Create another function that lets the user 
-* to have the choice to create a person.
-*******************************************/
 function Parents() {
     this.name = document.getElementById('name').value;
     this.gender = document.getElementById('gender').value;
@@ -49,10 +42,6 @@ function Parents() {
     }
 }
     
-/******************************************
-* Inheritance method applys here in the
-* function to create new objects.
-*******************************************/    
 function addObject () {
     person += 1;
     if (person == 1) {
@@ -102,10 +91,6 @@ function addObject () {
     document.getElementById('age').value='';
 }
 
-/******************************************
-* Select each person and its detalis when
-* user clicks the button for each.
-*******************************************/ 
 function persons(person){
     select = person;
     if (person == 1) {
@@ -122,30 +107,6 @@ function persons(person){
     }
 }
 
-/******************************************
-* Add a new object to the person's list
-*******************************************/ 
-function hobby() {
-    if (select == 1) {
-        person1.hobby = document.getElementById('hobby').value;
-        document.getElementById('output').innerHTML = person1.profile();
-    }
-    else if (select == 2) {
-        person2.hobby = document.getElementById('hobby').value;
-        document.getElementById('output').innerHTML = person2.profile();
-    }
-    else if (select == 3) {
-        person3.hobby = document.getElementById('hobby').value;
-        document.getElementById('output').innerHTML = person3.profile();
-    }
-    else if (select == 4) {
-        person4.hobby = document.getElementById('hobby').value;
-        document.getElementById('output').innerHTML = person4.profile();
-    }
-    else {
-        document.getElementById('output2').innerHTML = "Please create object first!";
-    }
-}
     </script>
 </head>
 <body>
@@ -159,7 +120,7 @@ function hobby() {
 	<div>
 	<div><hr /></div>
 	</div>
-   <h3>Create your own toy</h3>
+   <h3>Create your own shoes</h3>
          <form name="myForm">
 
 			<input type="text" id="color" name="color" placeholder="What Color?"/><br>
@@ -182,17 +143,11 @@ function hobby() {
 		<input type="text" id="name" placeholder="Name" /><br>
 		<input type="text" id="gender" placeholder="Gender" /><br>
 		<input type="text" id="age" placeholder="Age" /><br>
-		<button onclick="addObject()" id="button1">Creat Person</button>
+		<button onclick="addObject()" id="button1">Create Person</button>
 </div>
 		
 		<div id="output2"></div><br>
 		<div id="output4"></div>
-		
-		<div id="output"></div>
-		<input type="text" id="hobby" placeholder="Hobby" />
-		<button onclick="hobby()">Set Hobby</button>
-		<div id="output4"></div>
-		<div id="output"></div>
  	
 </div>
 </body>
