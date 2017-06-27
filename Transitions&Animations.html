@@ -10,81 +10,32 @@
     <link rel="stylesheet" href="content/main.css" />
 
 	<style>
-	.csstransition {
-		border-style: solid 1px;
-		display: block;
-		width: 300px;
-		height: 300px;
-		background-color: rgb(24,24,24);
-		color: #FFFFFF;
-		text-align: center;
-		-webkit-transition:all 2s ease-in-out;
-		transition:all 2s ease-in-out;
-		}
-	.csstransition:hover {
-		background-color: rgb(1,1,137);
-		width:200px;
-		height:200px;
-		}
-	h6 {
-	overflow: hidden;
+	div#box1 {
+		background: #9DCEFF;
+		width: 400px;
+		height: 200px;
+		position: relative;
+		animation: mymove 4s infinite;
 	}
-	.first-code,.second-code {
-		display: block;
-		overflow: hidden;
-		transition: all 500ms ease-in-out;
+	@keyframes mymove {
+    		from {left: 0px;}
+    		to {left: 100px;}
 	}
-	.first-code {
-		color: white !important;
-		height: auto;
-		opacity: 1;
-		width: auto;
+	</style>
+	<script>
+	function changeBG(el,clr){
+		var elem = document.getElementById(el);
+		elem.style.transition = "background 1.0s linear 0s";
+		elem.style.background = clr;
 	}
-	.second-code {
-		color: #fff;
-		height: 0;
-		opacity: 0;
-		width: 0;
+	function changeSZ(el,w,h){
+		var elem = document.getElementById(el);
+		elem.style.transition = "width 2s ease 0s, height .5s linear 0s";
+		elem.style.width = w + "px";
+		elem.style.transition = "height 4s linear 0s";
+		elem.style.height = h + "px";
 	}
-	.csstransition:hover .first-code {
-		height: 0px;
-		opacity: 0;
-		width: 0px;
-	}
-	.csstransition:hover .second-code {
-		height: auto;
-		opacity: 1;
-		width: auto;
-	}
-			
-	.cssanimation {
-		width: 200px;
-        	height: 200px;
-        	background-color: red;
-		opacity: 0.5;
-		position:relative;
-		-webkit-animation-name: spock;
-		-webkit-animation-duration: 5s;
-		animation-name: spock;
-		animation-duration: 5s;
-		animation-delay: 1s;
-		animation-direction: alternate;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-in;
-	}
-	@-webkit-keyframes spock{
-		0%   {background-color:red; left:0px; top:0px;}
-		33%  {background-color:white; left:600px; top:200px;}
-		66%  {background-color:blue; left:0px; top:300px;}
-		100% {background-color:red; left:0px; top:0px;}
-	}
-	@keyframes spock{
-		0%   {background-color:red; left:0px; top:0px;}
-		33%  {background-color:white; left:600px; top:200px;}
-		66%  {background-color:blue; left:0px; top:300px;}
-		100% {background-color:red; left:0px; top:0px;}
-	}
-		</style>
+	</script>
 		
 	</head>
 	<body>
@@ -95,26 +46,19 @@
                     <h2>CIT 261 - Transitions & Animations</h2>
                     <a href="index.html">Home</a><br/><br/>
                 </div>
-				<div>
-					<div><hr /></div>
-				</div>
-				<div>
-					<div>
-						<div id="container1">
-							<div id="animate1">Popeye</div>
-						</div>
-					</div>
-					<div>
-						<div id="container2">
-							<div id="animate2">Peter Pan</div>
-						</div>
-					</div>
-					<div>
-						<div id="container3">
-							<div id="animate3">Shrek</div>
-						</div>
-					</div>
-				</div>
+			<div>
+				<div><hr /></div>
+			</div>
+		<p>change color</p>
+			<button onclick="changeBG('box1','#F0F')">Magenta</button>
+			<button onclick="changeBG('box1','#0C0')">Green</button>
+			<button onclick="changeBG('box1','#4286f4')">blue</button>
+			<button onclick="changeBG('box1','#9DCEFF')">Origninal</button>
+		<div id="box1"></div>
+		<p>change size</p>
+			<button onclick="changeSZ('box1','42','42')">small</button>
+			<button onclick="changeSZ('box1','400','200')">medium</button>
+			<button onclick="changeSZ('box1','90001','600')">large</button><br>	
             </div>
         </div>
 	</body>
