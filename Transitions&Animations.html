@@ -18,21 +18,21 @@
 		animation: mymove 3s infinite;
 	}
 	@keyframes mymove {
-    		from {Right: 100px;}
-    		to {left: 0px;}
+    		from {Right: 400px;}
+    		to {left: 100px;}
 	}
 	</style>
 	<script>
 	function changeBG(el,clr){
 		var elem = document.getElementById(el);
-		elem.style.transition = "background 1.0s linear 1s";
+		elem.style.transition = "background 1.0s linear 0s";
 		elem.style.background = clr;
 	}
 	function changeSZ(el,w,h){
 		var elem = document.getElementById(el);
-		elem.style.transition = "width 2s ease-in-out 1s, height .3s linear 1s";
+		elem.style.transition = "width 2s ease-in-out 0s, height .3s linear 0s";
 		elem.style.width = w + "px";
-		elem.style.transition = "height 2s linear 1s";
+		elem.style.transition = "height 2s linear 0s";
 		elem.style.height = h + "px";
 	}
 	</script>
