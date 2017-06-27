@@ -18,21 +18,21 @@
 		animation: mymove 3s infinite;
 	}
 	@keyframes mymove {
-    		from {left: 0px;}
-    		to {left: 100px;}
+    		from {Right: 100px;}
+    		to {left: 0px;}
 	}
 	</style>
 	<script>
 	function changeBG(el,clr){
 		var elem = document.getElementById(el);
-		elem.style.transition = "background 1.0s linear 0s";
+		elem.style.transition = "background 1.0s linear 1s";
 		elem.style.background = clr;
 	}
 	function changeSZ(el,w,h){
 		var elem = document.getElementById(el);
-		elem.style.transition = "width 2s ease 0s, height .5s linear 0s";
+		elem.style.transition = "width 2s ease-in-out 1s, height .3s linear 1s";
 		elem.style.width = w + "px";
-		elem.style.transition = "height 4s linear 0s";
+		elem.style.transition = "height 2s linear 1s";
 		elem.style.height = h + "px";
 	}
 	</script>
@@ -51,7 +51,7 @@
 			</div>
 		<p>change color</p>
 			<button onclick="changeBG('box1','#C0C0C0')">Silver</button>
-			<button onclick="changeBG('box1','#8B0000')">Red</button>
+			<button onclick="changeBG('box1','#FF0000')">Red</button>
 			<button onclick="changeBG('box1','#0000ff')">Blue</button>
 			<button onclick="changeBG('box1','#FFA500')">Gold</button>
 		<div id="box1"></div>
