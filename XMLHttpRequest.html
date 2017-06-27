@@ -8,128 +8,66 @@
   
   <link rel="stylesheet" href="content/main.css" />
 
-<script type="text/javascript">
+       <script>
+            document.getElementById('visibilityButton5').style.display = 'none';
 
-/****************************************
-* This function will display a xml file by
-* by using xmlhttp request from the server. 
-*****************************************/  
-function listOfObject() {
-    var countryHttp = new XMLHttpRequest();
-        countryHttp.onreadystatechange = function (){
-        if (countryHttp.readyState == 4 && countryHttp.status == 200){
-         var city = JSON.parse(this.responseText);
-         getObjectRsponse(city);
-        }
-        }
-    var input = document.getElementById('objectInput').value;
-    countryHttp.open("GET", "citylist/" + input + ".txt", true);
-    countryHttp.send();
-}
-    
- /****************************************
-* This getFunction will get each file on the
-* client's demand.
-*****************************************/     
-function getObjectRsponse(city){
-    var output = "";
-    for (var i = 0; i < city.length; i++){
-        output += city[i] + "<hr>";
-    }
-    document.getElementById('objectOutput').innerHTML = output;
-}
-    
+            function loadDoc() {
+               document.getElementById('visibilityButton').style.display = 'none'; 
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                  document.getElementById("demo").innerHTML = xhttp.responseText;
+                }
+              };
+              xhttp.open("GET", "ajax.txt", true);
+              xhttp.send();
+            }
+            function loadDoc2() {
+                document.getElementById('visibilityButton2').style.display = 'none';
+                document.getElementById('visibilityButton3').style.display = 'none';
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                  document.getElementById("demo2").innerHTML = xhttp.responseText;
+                }
+              };
+              xhttp.open("GET", "ajax2.txt", true);
+              xhttp.send();
+             }  
+            function loadDoc3() {
+                document.getElementById('visibilityButton2').style.display = 'none';
+                document.getElementById('visibilityButton3').style.display = 'none';
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                  document.getElementById("demo6").innerHTML = xhttp.responseText;
+                }
+              };
+              xhttp.open("GET", "ajax3.txt", true);
+              xhttp.send();
+             }               
+            function storeLocalData() {
+                document.getElementById('demo2').style.display = 'none';
+                var fruit = new Array();
+                fruit[0] = "Strawberry";
+                fruit[1] = "Apple";
+                fruit[2] = "Orange";
+                fruit[3] = "Pear";
+                fruit[4] = "Peach";
 
-/****************************************
-* This function will display a xml file by
-* by using xmlhttp request from the server. 
-*****************************************/  
-function listOfObject2() {   
-    var studentHttp = new XMLHttpRequest();
-        studentHttp.onreadystatechange = function (){
-        if (studentHttp.readyState == 4 && studentHttp.status == 200){
-         var data = JSON.parse(this.responseText);
-         getObjectRsponse2(data);   
-            
-        }
-        }
-        
-    var input2 = document.getElementById('objectInput2').value;
-    studentHttp.open("GET", "jsonTxt/" + input2);
-    studentHttp.send(null); 
-}
+                localStorage["fruit"] = JSON.stringify(fruit);
 
-/****************************************
-* This getFunction will get each file on the
-* client's demand.
-*****************************************/     
-function getObjectRsponse2(data){
-    
-    var output2 = "";
-    for (var i = 0; i < data.students.length; i++){
-        
-         output2 += data.students[i].first + " ";
-         output2 += data.students[i].last + " " + "<br>";
-        
-         output2 += data.students[i].address.city + " " + "<br>";
-         output2 += data.students[i].address.state + " " + "<br>";
-         output2 += data.students[i].address.zip + " " + "<br>";
-         output2 += data.students[i].major + " " + "<br>";
-        
-         output2 += data.students[i].gpa + " <br>" + "<hr>";
-    
-    }
-    document.getElementById('objectOutput2').innerHTML = output2;
+                var FRUIT = JSON.parse(localStorage["fruit"]);
+                  document.getElementById("demo4").innerHTML = "Below is an array that was just stored in your local memory.";
+                  document.getElementById("demo5").innerHTML = FRUIT;
 
-}
+                loadDoc3();
 
-/****************************************
-* This function will display a xml file by
-* by using xmlhttp request from the server. 
-*****************************************/  
-function listOfObject3() {   
-    var animalHttp = new XMLHttpRequest();
-       animalHttp.onreadystatechange = function (){
-        if (animalHttp.readyState == 4 && animalHttp.status == 200){
-         var data = JSON.parse(this.responseText);
-         getObjectRsponse3(data);   
-            
-        }
-        }
-        
-    var input2 = document.getElementById('objectInput3').value;
-   animalHttp.open("GET","https://learnwebcode.github.io/json-example/animals-" + input2);
-    animalHttp.send(null);  
-}
-
-/****************************************
-* This getFunction will get each file on the
-* client's demand.
-*****************************************/     
-function getObjectRsponse3(data){
-    
-    var output2 = "";
-    for (var i = 0; i < data.length; i++){
-        
-         output2 += "<p>" + data[i].name + " " + data[i].species;   
-    
-    }
-    document.getElementById('objectOutput3').innerHTML = output2;
-}
-    
-    
-/****************************************
-* The reset function will clear all the 
-* displayed data
-*****************************************/        
-function reset() {
-     document.getElementById('objectOutput').innerHTML = "";
-}
-function reset2() {
-    document.getElementById('objectOutput2').innerHTML = "";
-}
-    
-</script>
+            } 
+            function clearCacheReload() {
+                location.reload(true);
+            }       
+        </script>
 </head>
 <body>
   <div>
@@ -143,43 +81,17 @@ function reset2() {
   <div><hr /></div>
 	</div>
 
-<h2>Please select a city from the drop-down list:</h2>
-   <select id="objectInput" onchange="listOfObject()">
-                  <!-- onchange="listOfObject()"-->
-                    <option value="select">Select</option>
-                    <option value="usa">USA</option>
-                    <option value="canada">CANADA</option>
-                    <option value="russia">RUSSIA</option>
-                    <option value="mexico">MEXICO</option>
-</select>
-<button  type="button" onclick="reset()">Reset</button>
-<h3>The largest cities and their respective populations:</h3>
-<div id="objectOutput"></div><br><hr><br>
+        <div id="demo"><h2>Let AJAX change this text</h2></div>
 
-<!--display the student-->    
-  <h2>Students<br>
- Please enter the file name(json.txt or json1.txt):</h2>
-                      
- <!--input file name-->
-    <input name="fileInput" onBlur="validateFileName(this.value)" id="objectInput2" value="json.txt" size="15">
-    <button onClick="listOfObject2()">Parse JSON</button>             
-   <button onClick="reset2()">Reset JSON</button>
-    <h3>Student Data:</h3>
-     <div id="objectOutput2" style="margin:1em; width:600px"></div>
-                
-<br><br>
-    
-      <!--Get animals file from the server-->   
-      <h2>Animals<br>
-         Please enter the file name(1.json, 2.json and 3.json):</h2>           
-        <!--input file name-->
-                <input name="fileInput" id="objectInput3" value="1.json" size="15">
-                <button onClick="listOfObject3()">Parse JSON</button>
-                <button onClick="reset2()">Reset JSON</button>
-                <h3>URL Data:</h3>
-         <div id="objectOutput3" style="margin:1em; width:600px"></div>
-      <br><br>
-</div>
+        <button type="button" id="visibilityButton" onclick="loadDoc()">Change Content</button>
+
+
+
+        <div id="demo2"><br><br></div>
+        <div id="demo4" style="margin-top:-50px"><br><br></div>
+        <h3 id="demo5"><br><br></h3><br><br>
+        <div id="demo6"><br><br></div>
+
 </body>
  
 </html>
