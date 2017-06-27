@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Transitions & Animations</title>
+		<title>Transitions and Animations</title>
 
 		<meta charset="utf-8" />
     
@@ -18,8 +18,8 @@
 		animation: mymove 3s infinite;
 	}
 	@keyframes mymove {
-    		from {Right: 400px;}
-    		to {left: 100px;}
+    		from {left: 50px;}
+    		to {left: 200px;}
 	}
 	</style>
 	<script>
@@ -30,9 +30,9 @@
 	}
 	function changeSZ(el,w,h){
 		var elem = document.getElementById(el);
-		elem.style.transition = "width 2s ease-in-out 0s, height .3s linear 0s";
+		elem.style.transition = "width 2s ease 0s, height .5s linear 0s";
 		elem.style.width = w + "px";
-		elem.style.transition = "height 2s linear 0s";
+		elem.style.transition = "height 4s linear 0s";
 		elem.style.height = h + "px";
 	}
 	</script>
@@ -43,7 +43,7 @@
 			<div>
                 <div>
                     <h1>Aaron Rose</h1>
-                    <h2>CIT 261 - Transitions & Animations</h2>
+                    <h2>CIT 261 - Transitions and Animations</h2>
                     <a href="index.html">Home</a><br/><br/>
                 </div>
 			<div>
@@ -56,7 +56,7 @@
 			<button onclick="changeBG('box1','#FFA500')">Gold</button>
 		<div id="box1"></div>
 		<p>Size Change</p>
-			<button onclick="changeSZ('box1','42','42')">Small</button>
+			<button onclick="changeSZ('box1','32','32')">Small</button>
 			<button onclick="changeSZ('box1','200','100')">Medium</button>
 			<button onclick="changeSZ('box1','1000','600')">Large</button><br>	
             </div>
