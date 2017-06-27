@@ -20,119 +20,49 @@
   <div>
   <div><hr /></div>
 	</div>
-  <button type="button" onclick="weddingDay()">Wedding Day</button>
-            <p id="us"></p>
+	
+	<style>
+        <p><b>Type your name in the input field below:</b></p>
+            <form> 
+            First name: <input type="text" onkeyup="guestLog(this.value)">
+            </form>
+            <p>Suggestions: <span id="txtHint"></span></p>
             
-            <button type="button" onclick="weddingLocation()">Wedding Location</button>
-            <p id="loaction"></p>
-            
-            <button type="button" onclick="weddingThoughts()">Wedding Location</button>
-            <p id="thoughts"></p>
-            
-            <style>
-
-                function weddingDay() {
-                var xhttp;
-                    if (window.XMLHttpRequest){
-                        xhttp = new XMLHttpRequest();
-                    } else {
-                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                xhttp.onreadystatechange = function() {
-                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
-                        document.getElementById("us").innerHTML = xhttp.responseText;
-                    }
-                };
-                    xhttp.open("GET", "weddingDay.txt", true);
-                    xhttp.send();
-              }
-              
-            function weddingLocation() {
-                var xhttp;
-                    if (window.XMLHttpRequest){
-                        xhttp = new XMLHttpRequest();
-                    } else {
-                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    
-                xhttp.onreadystatechange = function() {
-                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
-                        document.getElementById("loaction").innerHTML = xhttp.responseText;
-                    }
-                };
-                    xhttp.open("GET", "weddingLocation.txt", true);
-                    xhttp.send();
+            <textarea style="height: 160px; width: 300px; ">
+                
+                function guestLog(str) {
+                if (str.length == 0) { 
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "guestLog.php?q=" + str, true);
+                    xmlhttp.send();
+                }
             }
-            
-            function weddingThoughts() {
-                var xhttp;
-                    if (window.XMLHttpRequest){
-                        xhttp = new XMLHttpRequest();
-                    } else {
-                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    
-                xhttp.onreadystatechange = function() {
-                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
-                        document.getElementById("thoughts").innerHTML = xhttp.responseText;
-                    }
-                };
-                    xhttp.open("GET", "weddingThoughts.txt", true);
-                    xhttp.send();
-            }
-
-            </style>
+	</style>
 	<script>
-            function weddingDay() {
-                var xhttp;
-                    if (window.XMLHttpRequest){
-                        xhttp = new XMLHttpRequest();
-                    } else {
-                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                xhttp.onreadystatechange = function() {
-                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
-                        document.getElementById("us").innerHTML = xhttp.responseText;
-                    }
-                };
-                    xhttp.open("GET", "weddingDay.txt", true);
-                    xhttp.send();
-              }
-              
-            function weddingLocation() {
-                var xhttp;
-                    if (window.XMLHttpRequest){
-                        xhttp = new XMLHttpRequest();
-                    } else {
-                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    
-                xhttp.onreadystatechange = function() {
-                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
-                        document.getElementById("loaction").innerHTML = xhttp.responseText;
-                    }
-                };
-                    xhttp.open("GET", "weddingLocation.txt", true);
-                    xhttp.send();
+		function guestLog(str) {
+                if (str.length == 0) { 
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", "guestLog.php?q=" + str, true);
+                    xmlhttp.send();
+                }
             }
-            
-            function weddingThoughts() {
-                var xhttp;
-                    if (window.XMLHttpRequest){
-                        xhttp = new XMLHttpRequest();
-                    } else {
-                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    
-                xhttp.onreadystatechange = function() {
-                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
-                        document.getElementById("thoughts").innerHTML = xhttp.responseText;
-                    }
-                };
-                    xhttp.open("GET", "weddingThoughts.txt", true);
-                    xhttp.send();
-            }
-		</script>
+	</script>
 </body>
  
 </html>
