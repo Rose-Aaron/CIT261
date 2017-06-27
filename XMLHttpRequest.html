@@ -82,6 +82,57 @@
             }
 
             </style>
+	<script>
+            function weddingDay() {
+                var xhttp;
+                    if (window.XMLHttpRequest){
+                        xhttp = new XMLHttpRequest();
+                    } else {
+                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                xhttp.onreadystatechange = function() {
+                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
+                        document.getElementById("us").innerHTML = xhttp.responseText;
+                    }
+                };
+                    xhttp.open("GET", "weddingDay.txt", true);
+                    xhttp.send();
+              }
+              
+            function weddingLocation() {
+                var xhttp;
+                    if (window.XMLHttpRequest){
+                        xhttp = new XMLHttpRequest();
+                    } else {
+                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    
+                xhttp.onreadystatechange = function() {
+                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
+                        document.getElementById("loaction").innerHTML = xhttp.responseText;
+                    }
+                };
+                    xhttp.open("GET", "weddingLocation.txt", true);
+                    xhttp.send();
+            }
+            
+            function weddingThoughts() {
+                var xhttp;
+                    if (window.XMLHttpRequest){
+                        xhttp = new XMLHttpRequest();
+                    } else {
+                        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    
+                xhttp.onreadystatechange = function() {
+                    if ((xhttp.readyState == 4) && (xhttp.status == 200)) {
+                        document.getElementById("thoughts").innerHTML = xhttp.responseText;
+                    }
+                };
+                    xhttp.open("GET", "weddingThoughts.txt", true);
+                    xhttp.send();
+            }
+		</script>
 </body>
  
 </html>
