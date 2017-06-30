@@ -106,25 +106,6 @@ function persons(person){
         document.getElementById('output').innerHTML = person4.profile();
     }
 }
-	
-	var ClassC = function () {
-    this.name = "class C";
-    this.surname = "I'm the grandchild";
-}
-
-inheritsFrom(ClassC, ClassB);
-
-ClassC.prototype.foo = function() {
-    // Do some funky stuff here...
-}
-
-ClassC.prototype.print = function () {
-    ClassB.prototype.print.call(this);
-    console.log("Sounds like this is working!");
-}
-
-var c = new ClassC();
-c.print();
 
     </script>
 </head>
@@ -169,6 +150,23 @@ c.print();
 		<div id="output4"></div>
 	
 </div>
+	var ClassC = function () {
+    this.name = "class C";
+    this.surname = "I'm the grandchild";
+}
 
+inheritsFrom(ClassC, ClassB);
+
+ClassC.prototype.foo = function() {
+    // Do some funky stuff here...
+}
+
+ClassC.prototype.print = function () {
+    ClassB.prototype.print.call(this);
+    console.log("Sounds like this is working!");
+}
+
+var c = new ClassC();
+c.print();
 </body>
 </html>
