@@ -149,22 +149,23 @@ function persons(person){
 		<div id="output4"></div>
 	
 </div>
-<p id="demo"></p>
+	<div><hr /></div>
+	<p id="inherit"></p>
 
 <script>
-function Person(first, last, age, eye) {
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
-    this.eyeColor = eye;
-}
-Person.prototype.name = function() {
-    return this.firstName + " " + this.lastName
-};
+	function Person(first, last, age, eye) {
+    		this.firstName = first;
+    		this.lastName = last;
+    		this.age = age;
+    		this.eyeColor = eye;
+	}
+	Person.prototype.name = function() {
+    		return this.firstName + " " + this.lastName
+	};
 
-var myFather = new Person("John", "Doe", 50, "blue");
-document.getElementById("demo").innerHTML =
-"My father is " + myFather.name(); 
+	var myWife = new Person("Star", "Rose", 29, "hazel");
+	document.getElementById("inherit").innerHTML =
+	"My wife is " + myWife.name(); 
 </script>
 
 </body>
