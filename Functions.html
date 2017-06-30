@@ -107,6 +107,24 @@ function persons(person){
     }
 }
 
+			function objPrototype(color = "inherited", shape = "inherited", size = "inherited", 
+							  units = 42, inherited = "inherited")
+		{
+			this.color = color;
+			this.shape = shape;
+			this.size = size;
+			this.units = units;
+			this.inherited = inherited;
+			
+			this.displayColor = function(){return this.color + " " + this.inherited;
+		};
+		}
+		
+		var inheritingObj1 = new objPrototype("green", "circle", 50, "miles");
+		var inheritingObj2 = new objPrototype("beige", "square", 9999, "millimeters");
+		
+		document.getElementById("inheritance001").innerHTML = inheritingObj1.displayColor();
+		document.getElementById("inheritance002").innerHTML = inheritingObj2.displayColor();
     </script>
 </head>
 <body>
@@ -148,7 +166,8 @@ function persons(person){
 		
 		<div id="output2"></div><br>
 		<div id="output4"></div>
- 	
+ 	<p id="inheritance001"></p>
+	<p id="inheritance002"></p>
 </div>
 </body>
 </html>
