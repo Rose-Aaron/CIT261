@@ -106,19 +106,19 @@ function persons(person){
         document.getElementById('output').innerHTML = person4.profile();
     }
 }
-
+</script>
+<script>
 	function Person(first, last, age, eye) {
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
-    this.eyeColor = eye;
-}
-Person.prototype.nationality = "English";
+    		this.firstName = first;
+    		this.lastName = last;
+    		this.age = age;
+   	 	this.eyeColor = eye;
+	}
+	Person.prototype.nationality = "English";
 
-var myFather = new Person("John", "Doe", 50, "blue");
-document.getElementById("demo").innerHTML =
-"My father is " + myFather.nationality; 
-	
+	var myFather = new Person("John", "Doe", 50, "blue");
+	document.getElementById("demo").innerHTML =
+	"My father is " + myFather.nationality; 	
     </script>
 </head>
 <body>
@@ -162,6 +162,8 @@ document.getElementById("demo").innerHTML =
 		<div id="output4"></div>
 	
 </div>
+	<div>
 	<p id="demo"></p>
+	</div>
 </body>
 </html>
