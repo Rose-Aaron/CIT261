@@ -150,62 +150,6 @@ function persons(person){
 		<div id="output4"></div>
 	
 </div>
-	<p id="obj001"></p>
- 	<p id="style001"></p>
-	<p id="sqft001"></p>
-	<p id="color001"></p>
-	<p id="displayAll001"></p>
-	<p id="displayAllTest001"></p>
-	
-	<p id="inheritance001"></p>
-	<p id="inheritance002"></p>
 
-	  	<script>
-		var house = {type:"house001", 
-					 style:"ranch", 
-					 SqFt:"2300", 
-					 color:"grey", 
-					 trim:"blue", 
-					 displayAll: function()
-					 {
-						return this.type + ", " + 
-							   this.style + ", " + 
-							   this.SqFt + ", " + 
-							   this.color + ", " + 
-							   this.trim;
-					 }
-					};
-					
-		function objPrototype(color = "inherited", shape = "inherited", size = "inherited", 
-							  units = 42, inherited = "inherited")
-		{
-			this.color = color;
-			this.shape = shape;
-			this.size = size;
-			this.units = units;
-			this.inherited = inherited;
-			
-			this.displayColor = function(){return this.color + " " + this.inherited;
-		};
-		}
-		
-		var inheritingObj1 = new objPrototype("green", "circle", 50, "miles");
-		var inheritingObj2 = new objPrototype("beige", "square", 9999, "millimeters");
-		
-		document.getElementById("inheritance001").innerHTML = inheritingObj1.displayColor();
-		document.getElementById("inheritance002").innerHTML = inheritingObj2.displayColor();
-		
-		document.getElementById("obj001").innerHTML = house.type;
-		
-		document.getElementById("style001").innerHTML =
-		house.type + " is  a " + house.style + " style house.";
-		document.getElementById("sqft001").innerHTML =
-		house.type + " is  a " + house.SqFt + " square feet.";
-		
-		document.getElementById("color001").innerHTML =
-		house.type + " is " + house.color + " with " + house.trim + " trim.";
-		document.getElementById("displayAll001").innerHTML = house.displayAll();
-		document.getElementById("displayAll001").innerHTML = house.displayAll;
-	</script>
 </body>
 </html>
