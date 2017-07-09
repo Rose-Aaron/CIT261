@@ -26,90 +26,39 @@ function createObject(){
     }
     document.getElementById("displayObject").innerHTML = "Your shoes are size " + this.size + " and " + this.color + ". You like it (" + this.isGood + ").";
 }
-
-function Parents() {
-    this.name = document.getElementById('name').value;
-    this.gender = document.getElementById('gender').value;
-    this.age = document.getElementById('age').value;
-    this.profile = function() { 
-        return  "Name: " + this.name + "<br>" + 
-            "Gender: " + this.gender + "<br>" + 
-            "Age: " + this.age + "<br>" + 			
-    }
-    this.changeName = function (name) {
-        this.name = name;
-    }
-}
-    
-function addObject () {
-    person += 1;
-    if (person == 1) {
-        person1 = new Parents();
-	var btn = document.createElement("BUTTON");
-        var t = document.createTextNode("person1");
-        btn.appendChild(t);
-	btn.addEventListener ("click", function() {
-	person(1);
-		});
-       
-        document.getElementById('output4').appendChild(btn);
-    }
-    else if(person == 2) {
-        person2 = new Parents();
-	var btn = document.createElemtn("BUTTON");
-        var t = document.createTextNode("person2");
-        btn.appendChild(t);
-	btn.addEventListener ("click", function() {
-	person(2);
-		});
- 
-        document.getElementById('output4').appendChild(btn);
-    }
-    else if(person == 3) {
-        person3 = new Parents();
-	var btn = document.createElement("BUTTON");
-        var t = document.createTextNode("person3");
-        btn.appendChild(t);
-	btn.addEventListener ("click", function() {
-	person(3);
-		});
-
-        document.getElementById('output4').appendChild(btn);
-    }
-    else if(person == 4) {
-        person4 = new Parents();
-	var btn = document.createElement("BUTTON");
-        var t = document.createTextNode("person4");
-        btn.appendChild(t);
-	btn.addEventListener ("click", function() {
-	person(4);
-		});
-
-        document.getElementById('output4').appendChild(btn);
-        document.getElementById('personInput').innerHTML = '';
-        return;
-    }
-    document.getElementById('name').value=''; 
-    document.getElementById('gender').value=''; 
-    document.getElementById('age').value='';
-}
-
-function persons(person){
-    select = person;
-    if (person == 1) {
-        document.getElementById('output').innerHTML = person1.profile();
-    }
-    else if (person == 2) {
-        document.getElementById('output').innerHTML = person2.profile();
-    }
-    else if (person == 3){
-        document.getElementById('output').innerHTML = person3.profile();
-    }
-    else if (person == 4) {
-        document.getElementById('output').innerHTML = person4.profile();
-    }
-}
 </script>
+	
+<script>
+	var empObj = {
+		"employees":
+			[
+		{"firstName":"Aaron", "lastName":"Rose"},
+		{"firstName":"Star", "lastName":"Rose"}, 
+		{"firstName":"Reagan", "lastName":"Reeves"},
+		{"firstName":"Riley", "lastName":"Reeves"}
+			]
+		};
+	function getEmployee() {
+		var resultsValue = "";
+			
+		var stringCheck = document.getElementById('NumberA').value;
+			console.log(stringCheck);
+		if(!isNaN(stringCheck) ) {
+		if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
+			resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
+			empObj.employees[stringCheck - 1].firstName = "Bob"
+			}
+		else {
+			resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
+			}
+			}
+		else {
+			resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
+			}
+			console.log(resultsValue);
+			document.getElementById("results4").innerHTML = resultsValue;
+			}
+		</script>
 </head>
 <body>
   <div>
@@ -141,12 +90,10 @@ function persons(person){
     <hr>
     
     <h3>Inheritance Example</h3>
-<div id="personInput">
-		<input type="text" id="name" placeholder="Name" /><br>
-		<input type="text" id="gender" placeholder="Gender" /><br>
-		<input type="text" id="age" placeholder="Age" /><br>
-		<button onclick="addObject()" id="button1">Create Person</button>
-</div>
+    <div>
+	<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
+	<button onclick="getEmployee()">The winner is</button><br /><br />
+    </div>
 		
 		<div id="output2"></div><br>
 		<div id="output4"></div>
