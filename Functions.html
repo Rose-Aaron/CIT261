@@ -61,23 +61,23 @@ function createObject(){
     <h3>Inheritance Example</h3>
     	<p id="obj1"></p>
  	<p id="style1"></p>
-	<p id="sqft1"></p>
+	<p id="brand1"></p>
 	<p id="color1"></p>
 	
 	<p id="inheritance1"></p>
 	<p id="inheritance2"></p>
 		
 <script>
-		var house = {type:"house1", 
-					 style:"farm", 
-					 SqFt:"3200", 
-					 color:"brown", 
+		var car = {type:"car1", 
+					 style:"sports", 
+					 brand:"chevy", 
+					 color:"red", 
 					 trim:"black", 
 					 displayAll: function()
 					 {
 						return this.type + ", " + 
 							   this.style + ", " + 
-							   this.SqFt + ", " + 
+							   this.brand + ", " + 
 							   this.color + ", " + 
 							   this.trim;
 					 }
@@ -96,23 +96,23 @@ function createObject(){
 		};
 		}
 		
-		var inheritingObj1 = new objPrototype("red", "circle", 50, "miles");
-		var inheritingObj2 = new objPrototype("brick", "square", 9999, "millimeters");
+		var inheritingObj1 = new objPrototype("yellow", "van", 586, "miles");
+		var inheritingObj2 = new objPrototype("black", "truck", 1200, "miles");
 		
 		document.getElementById("inheritance1").innerHTML = inheritingObj1.displayColor();
 		document.getElementById("inheritance2").innerHTML = inheritingObj2.displayColor();
 		
-		document.getElementById("obj1").innerHTML = house.type;
+		document.getElementById("obj1").innerHTML = car.type;
 		
 		document.getElementById("style1").innerHTML =
-		house.type + " is  a " + house.style + " style house.";
-		document.getElementById("sqft1").innerHTML =
-		house.type + " is  a " + house.SqFt + " square feet.";
+		car.type + " is  a " + car.style + " car.";
+		document.getElementById("brand1").innerHTML =
+		car.type + " is  a " + car.SqFt + " brand.";
 		
 		document.getElementById("color1").innerHTML =
-		house.type + " is " + house.color + " with " + house.trim + " trim.";
-		document.getElementById("displayAll1").innerHTML = house.displayAll();
-		document.getElementById("displayAll1").innerHTML = house.displayAll;
+		car.type + " is " + car.color + " with " + car.trim + " trim.";
+		document.getElementById("displayAll1").innerHTML = car.displayAll();
+		document.getElementById("displayAll1").innerHTML = car.displayAll;
 
 </script>
 	<div><hr /></div>
