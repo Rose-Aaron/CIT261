@@ -59,22 +59,21 @@ function createObject(){
     <hr>
     
     <h3>Inheritance Example</h3>
-    	<p id="obj001"></p>
- 	<p id="style001"></p>
-	<p id="sqft001"></p>
-	<p id="color001"></p>
-	<p id="displayAll001"></p>
-	<p id="displayAllTest001"></p>
+    	<p id="obj1"></p>
+ 	<p id="style1"></p>
+	<p id="sqft1"></p>
+	<p id="color1"></p>
+	<p id="displayAll1"></p>
 	
 	<p id="inheritance001"></p>
 	<p id="inheritance002"></p>
 		
 <script>
-		var house = {type:"house001", 
-					 style:"ranch", 
-					 SqFt:"2300", 
-					 color:"grey", 
-					 trim:"blue", 
+		var house = {type:"house1", 
+					 style:"farm", 
+					 SqFt:"3200", 
+					 color:"brown", 
+					 trim:"black", 
 					 displayAll: function()
 					 {
 						return this.type + ", " + 
@@ -98,23 +97,23 @@ function createObject(){
 		};
 		}
 		
-		var inheritingObj1 = new objPrototype("green", "circle", 50, "miles");
-		var inheritingObj2 = new objPrototype("beige", "square", 9999, "millimeters");
+		var inheritingObj1 = new objPrototype("red", "circle", 50, "miles");
+		var inheritingObj2 = new objPrototype("brick", "square", 9999, "millimeters");
 		
-		document.getElementById("inheritance001").innerHTML = inheritingObj1.displayColor();
-		document.getElementById("inheritance002").innerHTML = inheritingObj2.displayColor();
+		document.getElementById("inheritance1").innerHTML = inheritingObj1.displayColor();
+		document.getElementById("inheritance2").innerHTML = inheritingObj2.displayColor();
 		
-		document.getElementById("obj001").innerHTML = house.type;
+		document.getElementById("obj1").innerHTML = house.type;
 		
-		document.getElementById("style001").innerHTML =
+		document.getElementById("style1").innerHTML =
 		house.type + " is  a " + house.style + " style house.";
-		document.getElementById("sqft001").innerHTML =
+		document.getElementById("sqft1").innerHTML =
 		house.type + " is  a " + house.SqFt + " square feet.";
 		
-		document.getElementById("color001").innerHTML =
+		document.getElementById("color1").innerHTML =
 		house.type + " is " + house.color + " with " + house.trim + " trim.";
-		document.getElementById("displayAll001").innerHTML = house.displayAll();
-		document.getElementById("displayAll001").innerHTML = house.displayAll;
+		document.getElementById("displayAll1").innerHTML = house.displayAll();
+		document.getElementById("displayAll1").innerHTML = house.displayAll;
 
 </script>
 	<div><hr /></div>
