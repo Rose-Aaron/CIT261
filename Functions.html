@@ -28,6 +28,47 @@ function createObject(){
 }
 </script>
 	
+</head>
+<body>
+  <div>
+	<div>
+        	<div>
+                    <h1>Aaron Rose</h1>
+                    <h2>CIT 261 - Functions</h2>
+                    <a href="index.html">Home</a><br/><br/>
+        </div>
+	<div>
+	<div><hr /></div>
+	</div>
+   <h3>Create your own shoes</h3>
+         <form name="myForm">
+
+			<input type="text" id="color" name="color" placeholder="What Color?"/><br>
+			<input type="text" id="size" name="size" placeholder="What Size?"/><br>
+			<label>Do you like it?</label>
+			<select id="good">
+				<option value="true">Yes</option>
+				<option value="false">No</option>
+			</select><br>
+			<button id="button" type="button" value="submit" onclick="createObject()">Create Object</button>
+		</form>
+    
+        <p id="displayObject"></p>
+        
+    
+    <hr>
+    
+    <h3>Inheritance Example</h3>
+    	<p id="obj001"></p>
+ 	<p id="style001"></p>
+	<p id="sqft001"></p>
+	<p id="color001"></p>
+	<p id="displayAll001"></p>
+	<p id="displayAllTest001"></p>
+	
+	<p id="inheritance001"></p>
+	<p id="inheritance002"></p>
+		
 <script>
 		var house = {type:"house001", 
 					 style:"ranch", 
@@ -75,47 +116,7 @@ function createObject(){
 		document.getElementById("displayAll001").innerHTML = house.displayAll();
 		document.getElementById("displayAll001").innerHTML = house.displayAll;
 
-		</script>
-</head>
-<body>
-  <div>
-	<div>
-        	<div>
-                    <h1>Aaron Rose</h1>
-                    <h2>CIT 261 - Functions</h2>
-                    <a href="index.html">Home</a><br/><br/>
-        </div>
-	<div>
-	<div><hr /></div>
-	</div>
-   <h3>Create your own shoes</h3>
-         <form name="myForm">
-
-			<input type="text" id="color" name="color" placeholder="What Color?"/><br>
-			<input type="text" id="size" name="size" placeholder="What Size?"/><br>
-			<label>Do you like it?</label>
-			<select id="good">
-				<option value="true">Yes</option>
-				<option value="false">No</option>
-			</select><br>
-			<button id="button" type="button" value="submit" onclick="createObject()">Create Object</button>
-		</form>
-    
-        <p id="displayObject"></p>
-        
-    
-    <hr>
-    
-    <h3>Inheritance Example</h3>
-    	<p id="obj001"></p>
- 	<p id="style001"></p>
-	<p id="sqft001"></p>
-	<p id="color001"></p>
-	<p id="displayAll001"></p>
-	<p id="displayAllTest001"></p>
-	
-	<p id="inheritance001"></p>
-	<p id="inheritance002"></p>
+</script>
 	<div><hr /></div>
 
 </body>
