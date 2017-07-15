@@ -29,35 +29,52 @@ function createObject(){
 </script>
 	
 <script>
-	var empObj = {
-		"employees":
-			[
-		{"firstName":"Aaron", "lastName":"Rose"},
-		{"firstName":"Star", "lastName":"Rose"}, 
-		{"firstName":"Reagan", "lastName":"Reeves"},
-		{"firstName":"Riley", "lastName":"Reeves"}
-			]
-		};
-	function getEmployee() {
-		var resultsValue = "";
+		var house = {type:"house001", 
+					 style:"ranch", 
+					 SqFt:"2300", 
+					 color:"grey", 
+					 trim:"blue", 
+					 displayAll: function()
+					 {
+						return this.type + ", " + 
+							   this.style + ", " + 
+							   this.SqFt + ", " + 
+							   this.color + ", " + 
+							   this.trim;
+					 }
+					};
+					
+		function objPrototype(color = "inherited", shape = "inherited", size = "inherited", 
+							  units = 42, inherited = "inherited")
+		{
+			this.color = color;
+			this.shape = shape;
+			this.size = size;
+			this.units = units;
+			this.inherited = inherited;
 			
-		var stringCheck = document.getElementById('NumberA').value;
-			console.log(stringCheck);
-		if(!isNaN(stringCheck) ) {
-		if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
-			resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
-			empObj.employees[stringCheck - 1].firstName = "Bob"
-			}
-		else {
-			resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
-			}
-			}
-		else {
-			resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
-			}
-			console.log(resultsValue);
-			document.getElementById("results4").innerHTML = resultsValue;
-			}
+			this.displayColor = function(){return this.color + " " + this.inherited;
+		};
+		}
+		
+		var inheritingObj1 = new objPrototype("green", "circle", 50, "miles");
+		var inheritingObj2 = new objPrototype("beige", "square", 9999, "millimeters");
+		
+		document.getElementById("inheritance001").innerHTML = inheritingObj1.displayColor();
+		document.getElementById("inheritance002").innerHTML = inheritingObj2.displayColor();
+		
+		document.getElementById("obj001").innerHTML = house.type;
+		
+		document.getElementById("style001").innerHTML =
+		house.type + " is  a " + house.style + " style house.";
+		document.getElementById("sqft001").innerHTML =
+		house.type + " is  a " + house.SqFt + " square feet.";
+		
+		document.getElementById("color001").innerHTML =
+		house.type + " is " + house.color + " with " + house.trim + " trim.";
+		document.getElementById("displayAll001").innerHTML = house.displayAll();
+		document.getElementById("displayAll001").innerHTML = house.displayAll;
+
 		</script>
 </head>
 <body>
@@ -90,38 +107,16 @@ function createObject(){
     <hr>
     
     <h3>Inheritance Example</h3>
-    <div>
-	<label>Type a number between 0 and 5: </lable> <input id="NumberA" type="text" value=""></input><br />
-	<button onclick="getEmployee()">The winner is</button><br /><br />
-    </div>
-	  
-	<p id="results1"></p>
-	<p id="results2"></p>
-	<p id="results3"></p>
-	<p id="results4"></p>
-		
-		<div id="output2"></div><br>
-		<div id="output4"></div>
+    	<p id="obj001"></p>
+ 	<p id="style001"></p>
+	<p id="sqft001"></p>
+	<p id="color001"></p>
+	<p id="displayAll001"></p>
+	<p id="displayAllTest001"></p>
 	
-</div>
+	<p id="inheritance001"></p>
+	<p id="inheritance002"></p>
 	<div><hr /></div>
-	<p id="inherit"></p>
-
-<script>
-	function Person(first, last, age, eye) {
-    		this.firstName = first;
-    		this.lastName = last;
-    		this.age = age;
-    		this.eyeColor = eye;
-	}
-	Person.prototype.name = function() {
-    		return this.firstName + " " + this.lastName
-	};
-
-	var myWife = new Person("Star", "Rose", 29, "Hazel");
-	document.getElementById("inherit").innerHTML =
-	"My wife is " + myWife.name(); 
-</script>
 
 </body>
 </html>
